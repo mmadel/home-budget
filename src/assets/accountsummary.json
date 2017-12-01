@@ -1,0 +1,99 @@
+{
+    "groups":[
+       {
+          "id":1,
+          "name":"Home",
+          "type":"EXPENDITURE",
+          "projected":0.0,
+          "actual":0.0,
+          "budgets":[
+             {
+                "id":null,
+                "name":"Electricity",
+                "projected":1000.0,
+                "actual":500.0,
+                "period":"2017-11",
+                "createdAt":null,
+                "category":{
+                   "id":1,
+                   "name":"Home",
+                   "type":"EXPENDITURE",
+                   "createdAt":null
+                }
+             },
+             {
+                "id":null,
+                "name":"Phone",
+                "projected":1000.0,
+                "actual":677.0,
+                "period":"2017-11",
+                "createdAt":null,
+                "category":{
+                   "id":1,
+                   "name":"Home",
+                   "type":"EXPENDITURE",
+                   "createdAt":null
+                }
+             }
+          ]
+       },
+       {
+        "id":2,
+        "name":"Transportation",
+        "type":"EXPENDITURE",
+        "projected":0.0,
+        "actual":0.0,
+        "budgets":[
+           {
+              "id":null,
+              "name":"Fuel",
+              "projected":1000.0,
+              "actual":500.0,
+              "period":"2017-11",
+              "createdAt":null,
+              "category":{
+                 "id":1,
+                 "name":"Transportation",
+                 "type":"EXPENDITURE",
+                 "createdAt":null
+              }
+           }
+        ]
+     },
+     {
+        "id":null,
+        "name":"Income",
+        "type":"INCOME",
+        "projected":0.0,
+        "actual":0.0,
+        "budgets":[
+            {
+                "budgetId": "1",
+                "name": "Interest Income",
+                "projected":100.0,
+                "actual": 100.0,
+                "periodon": "2017-11",
+                "createDate": "2017-11-01",
+                "category": {
+                  "name": "Income",
+                  "type": "INCOME",
+                  "createdDate": "2017-10-24"
+                }
+            },
+            {
+                "budgetId": "2",
+                "name": "Gifts Received",
+                "projected": 300.0,
+                "actual": 500.0,
+                "periodon": "2017-11",
+                "createDate": "2017-11-01",
+                "category": {
+                  "name": "Income",
+                  "type": "INCOME",
+                  "createdDate": "2017-10-24"
+                }
+            }
+        ]
+     }
+    ]
+ }

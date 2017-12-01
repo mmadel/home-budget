@@ -1,0 +1,54 @@
+[
+    {
+        "budgetId": "1",
+        "budgetName": "Electricity",
+        "projected": "1000",
+        "actual": "1000",
+        "periodon": "2017-11",
+        "createDate": "2017-11-01",
+        "category": {
+          "categoryName": "Home",
+          "categoryType": "EXPENDITURE",
+          "createdDate": "2017-10-25"
+        }
+      },
+      {
+        "budgetId": "2",
+        "budgetName": "Interest Income",
+        "projected": "11000",
+        "actual": "11000",
+        "periodon": "2017-11",
+        "createDate": "2017-11-01",
+        "category": {
+          "categoryName": "Income",
+          "categoryType": "INCOME",
+          "createdDate": "2017-10-24"
+        }
+      }, 
+      {
+        "budgetId": "3",
+        "budgetName": "Phone",
+        "projected": "1000",
+        "actual": "677",
+        "periodon": "2017-11",
+        "createDate": "2017-11-01",
+        "category": {
+          "categoryName": "Home",
+          "categoryType": "EXPENDITURE",
+          "createdDate": "2017-10-25"
+        }
+      },
+      {
+        "budgetId": "4",
+        "budgetName": "Fuel",
+        "projected": "5000",
+        "actual": "677",
+        "periodon": "2017-11",
+        "createDate": "2017-11-01",
+        "category": {
+          "categoryName": "Transportation",
+          "categoryType": "EXPENDITURE",
+          "createdDate": "2017-10-25"
+        }
+      }
+]

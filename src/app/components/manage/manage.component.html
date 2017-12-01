@@ -1,0 +1,114 @@
+<section class="content-header">
+  <h2>Manage Budget</h2>
+</section>
+
+<section class="content">
+  <div class="row">
+    <usage [income]='usageSummary?.income' [projected]='usageSummary?.projected' [actual]='usageSummary?.actual' [remaining]='usageSummary?.remaining' ></usage> 
+  </div>
+  <div class="row">
+    <div class="col-lg-12 calendar-nav">
+      <div class="previous">
+        <span class="fa fa-arrow-left"></span>
+      </div>
+      <div class="next">
+        <span class="fa fa-arrow-right"></span>
+      </div>
+      <div class="btn-group btn-group-justified">
+        <div class="btn-group" *ngFor='let group of groups'>
+          <a (click)="onClickCalendar(group.path)"  class="btn btn-primary btn-lg" [ngClass]="{true: 'active'}[group.active]">{{group.display}} <sup *ngIf="group.current"><span class="fa fa-star"></span></sup></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="space"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12" *ngFor="let group of accountSummary?.groups | accountSummaryTypeFilter : 'INCOME'">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <span>{{group.name}}</span>
+          </h3>
+        </div>
+        <div class="panel-body budgets income">
+          <ul class="list-unstyled list-budgets">
+            <li class="budget-header">
+              <span class="name">Name</span>
+              <div class="pull-right">
+                <div class="projected">Projected</div>
+                <div class="actual">Actual</div>
+              </div>
+              <div class="clearfix"></div>
+            </li>
+            <li class="budget" *ngFor="let budget of group.budgets">
+              <span class="fa fa-pencil icon-edit" title="Edit budget"></span> <span class="name">{{budget.name}}</span>
+              <div class="pull-right">
+                <div class="projected">{{budget.projected}}</div>
+                <div class="actual">{{budget.actual}}</div>
+              </div>
+            </li>
+            <li class="budget-footer">
+              <span class="total">Total: </span>
+              <div class="pull-right">
+                <div class="projected">{{group.projected}}</div>
+                <div class="actual">{{group.actual}}</div>
+              </div>
+              <div class="clearfix"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div masonry load-images="false" reload-on-show>
+      <div class="masonry-brick col-xs-12 col-sm-12 col-md-12 col-lg-6" *ngFor="let group of accountSummary?.groups | accountSummaryTypeFilter : 'EXPENDITURE' ">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <span>{{group.name}}</span>
+            </h3>
+          </div>
+          <div class="panel-body budgets">
+            <ul class="list-unstyled list-budgets">
+              <li class="budget-header">
+                <span class="name">Name</span>
+                <div class="pull-right">
+                  <div class="projected">Projected</div>
+                  <div class="actual">Actual</div>
+                  <div class="remaining">Remaining</div>
+                </div>
+                <div class="clearfix"></div>
+              </li>
+              <li class="budget" *ngFor="let budget of group.budgets">
+                <span class="fa fa-pencil icon-edit" title="Edit budget"></span> <span class="name">{{budget.name}}</span>
+                <div class="pull-right">
+                  <div class="projected">{{budget.projected}}</div>
+                  <div class="actual">{{budget.actual}}</div>
+                  <div class="remaining">
+
+                  </div>
+                  <div class="actions">
+                    <span class="fa fa-plus-square-o icon-plus" title="Add transaction"></span> <span class="fa fa-list-ul icon-list" title="View transactions"></span>
+                  </div>
+                </div>
+              </li>
+              <li class="budget-footer">
+                <span class="total">Total: </span>
+                <div class="pull-right">
+                  <div class="projected">{{group.projected}}</div>
+                  <div class="actual">{{group.actual}}</div>
+                </div>
+                <div class="clearfix"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

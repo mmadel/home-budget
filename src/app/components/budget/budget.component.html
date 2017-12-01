@@ -1,0 +1,60 @@
+<section class="content-header">
+      <h2>Manage Budget</h2>
+    </section>
+    <section class="content">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-sm-3">
+              <input class="form-control" type="text" placeholder="Search budgets..." [(ngModel)]="filter"/>
+            </div>
+            <div class="col-sm-9">
+              <div class="pull-right">
+                <a [routerLink]="['/configuration/addbudget']" class="btn btn-primary"><span class="fa fa-plus"></span> Add Budget</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="space"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Budgets</h3>
+            </div>
+            <div class="panel-body">
+              <div ng-hide="loaded" class="loading"></div>
+              <table foo-table class="table footable" ng-model="categories" ng-show="categories.length">
+                <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Name</th>
+                  <th>Projected</th>
+                  <th>Actual</th>
+                  <th>Period</th>
+                  <th class="actions" data-sort-ignore="true">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor='let budget of budgets  | budgetFilter : filter'>
+                    <td>{{budget.category.categoryName}}</td>
+                    <td>{{budget.budgetName}}</td>
+                    <td>{{budget.projected}}</td>
+                    <td>{{budget.actual}}</td>
+                    <td>{{budget.periodon}}</td>
+                    <td class="actions">
+                      <button type="button" class="btn btn-danger" (click)="deleteBudget(budget.budgetId)"><span class="fa fa-trash-o"></span> Delete</button>
+                    </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

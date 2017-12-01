@@ -1,0 +1,57 @@
+<section class="content-header">
+        <h2>Manage Category</h2>
+      </section>
+      
+      <section class="content">
+        <div class="row">
+          <div class="col-lg-10 col-lg-offset-1">
+            <section></section>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="box box-primary">
+              <div class="box-header">
+                <h3 class="box-title">Add Category</h3>
+              </div> 
+              <div class="box-body">
+                <form #CategoryForm="ngForm"  role="form" class="form-horizontal" novalidate (ngSubmit)="onSubmit()">
+                  <div class="form-group has-feedback">
+                    <label for="name" class="col-sm-3 control-label">Name</label>
+                    <div class="col-sm-7">
+                      <input  required type="text" class="form-control" [(ngModel)]="category.categoryName" id="name" placeholder="Enter Name" #categoryName="ngModel" name="name">
+                      <span class="help-block" *ngIf="categoryName.invalid && !categoryName.touched">
+                          Category Name Is Required.
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group has-feedback">
+                    <label for="type" class="col-sm-3 control-label">Type</label>
+                    <div class="col-sm-7">
+                      <div class="radio">
+                        <label>
+                          <input required [(ngModel)]="category.categoryType" type="radio" value="INCOME" name="type" id="type" #type="ngModel">
+                          Income
+                        </label>
+                        <label>
+                          <input required [(ngModel)]="category.categoryType" type="radio" value="EXPENDITURE" name="type"#type="ngModel">
+                          Expenditure
+                        </label>
+                      </div>
+                      <span class="help-block" *ngIf="type.invalid">
+                          Category type Is Required.
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-7">
+                      <a class="btn btn-default" [routerLink]="['/configuration/category']">Back</a>
+                      <button [disabled]="!CategoryForm.valid" type="submit" class="btn btn-primary"><span class="fa fa-save"></span> Submit</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>      

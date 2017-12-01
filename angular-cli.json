@@ -17,13 +17,11 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.json",
       "prefix": "app",
-      "styles": [
-	"../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "styles.css"
+      "styles": ["./vendor/bootstrap/css/bootstrap.css","./vendor/font-awesome/css/font-awesome.min.css","style.css","../node_modules/ng2-toastr/bundles/ng2-toastr.min.css"
       ],
-      "scripts": [],
+      "scripts": ["./vendor/jquery/jquery.js","./vendor/bootstrap/js/bootstrap.js","menu.js","../node_modules/ng2-toastr/bundles/ng2-toastr.min.js"],
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }

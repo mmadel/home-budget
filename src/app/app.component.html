@@ -1,89 +1,78 @@
-<div id="wrapper">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Budget App</title>
   
-          <!-- Navigation -->
-          <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-              <div class="navbar-header">
-                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="index.html">Home Budget</a>
-              </div>
-              <!-- /.navbar-header -->
+
+  <!-- not available on JSDelivr so using Cloudflare -->
   
-              <ul class="nav navbar-top-links navbar-right">
-                  <!-- /.dropdown -->
-                  <li class="dropdown">
-                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                          <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                      </a>
-                      <ul class="dropdown-menu dropdown-user">
-                          <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                          </li>
-                          <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                          </li>
-                          <li class="divider"></li>
-                          <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                          </li>
-                      </ul>
-                      <!-- /.dropdown-user -->
-                  </li>
-                  <!-- /.dropdown -->
-              </ul>
-              <!-- /.navbar-top-links -->
+  <!-- end Cloudflare -->
+
+  <!-- local stylesheets, not available on jsdelivr -->
   
-              <div class="navbar-default sidebar" role="navigation">
-                  <div class="sidebar-nav navbar-collapse">
-          <div class="user-panel">
-            <div class="image">
-              <img class="img-circle"  src="">
-            </div>
-          </div>
-                      <ul class="nav" id="side-menu">
-                          <li>
-                              <a href=""><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                          </li>
-                          <li>
-                              <a href=""><i class="fa fa-edit fa-fw"></i> Manage</a>
-                          </li>
-                          <li>
-                              <a href="#"><i class="fa fa-wrench fa-fw"></i> Configurations<span class="fa arrow"></span></a>
-                              <ul class="nav nav-second-level">
-                                  <li>
-                                      <a href="">Categories</a>
-                                  </li>
-                                  <li>
-                                      <a href="">Budget</a>
-                                  </li>
-                              </ul>
-                              <!-- /.nav-second-level -->
-                          </li>
-              <li>
-                              <a href=""><i class="fa fa-edit fa-fw"></i> Reports</a>
-                          </li>
-                      </ul>
-                  </div>
-                  <!-- /.sidebar-collapse -->
-              </div>
-              <!-- /.navbar-static-side -->
-          </nav>
-  
-          <div id="page-wrapper">
-              <div class="row">
-                  <div class="col-lg-12">
-                      <h1 class="page-header">Title</h1>
-                  </div>
-                  <!-- /.col-lg-12 -->
-              </div>
-              <!-- /.row -->
-             
-              <div class="row">
-                  
-              </div>
-              <!-- /.row -->
-          </div>
-          <!-- /#page-wrapper -->
-  
+
+ 
+</head>
+<header class="header">
+  <a href="/dashboard" class="logo">
+    Budget App
+  </a>
+  <nav class="navbar navbar-static-top" role="navigation">
+    <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+  </nav>
+</header>
+
+<div class="wrapper">
+  <aside class="left-side">
+    <section class="sidebar">
+      <div class="user-panel">
+        <div class="image">
+          <img src="" class="img-circle" alt="User Image">
+        </div>
       </div>
+      <ul class="sidebar-menu" bs-navbar>
+        <li>
+          <a [routerLink]="['/dashboard']" title="Show my budget overview">
+            <span class="fa fa-dashboard"></span> Dashboard
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/manage']" title="Manage my budget" data-prefix="true">
+            <span class="fa fa-edit"></span> Manage 
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#" title="Manage my configuration">
+            <span class="fa fa-cogs"></span> Configuration
+            <span class="fa fa-angle-left pull-right"></span>
+          </a>
+          <ul class="treeview-menu">
+            <li>
+              <a [routerLink]="['/configuration/category']" title="Manage my categories" data-prefix="true" style="margin-left: 10px;">
+                <span class="fa fa-angle-double-right"></span> Categories
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/configuration/budget']" title="Manage my budgets" data-prefix="true" style="margin-left: 10px;">
+                <span class="fa fa-angle-double-right"></span> Budgets
+              </a>
+            </li>
+          </ul>
+        <li>
+          <a [routerLink]="['/report']" title="My budget reports">
+            <span class="fa fa-file-text"></span> Reports
+          </a>
+        </li>
+      </ul>
+    </section>
+  </aside>
+  <aside class="right-side">
+    <router-outlet></router-outlet>
+
+  </aside>
+</div>
