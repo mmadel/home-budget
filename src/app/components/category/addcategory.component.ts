@@ -7,7 +7,7 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 })
 export class AddCategoryComponent{
      category =new ICategory() ;
-     
+     //https://toddmotto.com/angular-2-forms-template-driven
      constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
         this.toastr.setRootViewContainerRef(vcr);
      }

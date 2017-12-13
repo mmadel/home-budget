@@ -21,19 +21,26 @@ import { BudgetFilterPipe } from "./components/budget/budget-filter.pipe";
 import { ManageService } from "./services/manage.service";
 import { AccountSummaryTypeFilterPipe } from "./components/manage/accountSummaryType-Filter.Pipe";
 import { Usage } from "./components/manage/usage.component";
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+import { ConfirmComponent } from './components/manage/add.transaction.dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,CategoryComponent,BudgetComponent,ReportComponent,ManageComponent,
-    ConfigurationComponent,AddCategoryComponent,CategoryFilterPipe,AddBudgetComponent,BudgetFilterPipe,AccountSummaryTypeFilterPipe,Usage
+    ConfigurationComponent,AddCategoryComponent,CategoryFilterPipe,AddBudgetComponent,BudgetFilterPipe,AccountSummaryTypeFilterPipe,Usage,
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing,ToastModule.forRoot()
+    routing,ToastModule.forRoot(),
+    BootstrapModalModule
   ],
   providers: [CategoryService,BudgetService,ManageService],
+  entryComponents: [
+    ConfirmComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

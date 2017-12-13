@@ -1,0 +1,46 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+       <div class="modal-header">
+          <button type="button" class="close" (click)="close()">&times;</button>
+          <h3 class="modal-title">Add Transaction:</h3>
+       </div>
+       <form #addTransactionForm="ngForm" novalidate class="form-horizontal" role="form" (ngSubmit)="confirm()">
+          <div class="modal-body">
+             <div class="form-group has-feedback" ng-class="errorClass('amount')">
+                <label for="amount" class="col-sm-3 control-label">Amount</label>
+                <div class="col-sm-7">
+                   <input type="number" step="1" class="form-control" [(ngModel)]="transaction.transactionAmount" id="amount" name="amount" placeholder="Enter Transaction Amount" autofocus
+                        #transactionAmount="ngModel" required>
+                      <span class="help-block" *ngIf="transactionAmount.invalid && !transactionAmount.touched">
+                        Transaction amount is required.
+                   </span>
+                </div>
+             </div>
+             <div class="form-group">
+                <label for="remark" class="col-sm-3 control-label">Remark</label>
+                <div class="col-sm-7">
+                   <textarea class="form-control" [(ngModel)]="transaction.transactionRemark" id="remark" name="remark" rows="3" placeholder="Enter Remark" #transactionRemark="ngModel" required></textarea>
+                   <span class="help-block" *ngIf="transactionRemark.invalid && !transactionRemark.touched">
+                    Transaction remark is required.
+                </span>
+                </div>
+             </div>
+			 <div class="form-group">
+                <label for="transactionOn" class="col-sm-3 control-label">Transaction Date</label>
+                <div class="col-sm-7">
+                   <input type="date" class="form-control" [(ngModel)]="transaction.transactionOn"  id="transactionOn" name="transactionOn" placeholder="Enter Transaction Date (yyyy-mm-dd)" #transactionOn="ngModel" required>
+                   <span class="help-block" ng-show="transactionOn.invalid && transactionOn.touched">
+                        Transaction date is required;
+                   </span>
+                </div>
+             </div>
+          </div>
+          <div class="modal-footer">
+             <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+             <button type="submit" [disabled]="!addTransactionForm.valid" class="btn btn-primary">
+                <span class="fa fa-save"></span> Submit
+             </button>
+          </div>
+       </form>
+    </div>
+ </div>

@@ -4,11 +4,14 @@ import { AccountSummary } from "../../model/AccountSummary";
 import { ActivatedRoute, Router, Params } from '@angular/router'
 import { UsageSummary } from "../../model/usageSummary";
 import * as moment from 'moment/moment';
+import { ConfirmComponent } from './add.transaction.dialog.component';
+import { DialogService } from "ng2-bootstrap-modal";
+import { Transaction } from "app/model/Transaction";
 @Component({
     templateUrl: 'manage.component.html'
 })
 export class ManageComponent {
-    constructor(private _manageService: ManageService, private _route: ActivatedRoute) {
+    constructor(private _manageService: ManageService, private _route: ActivatedRoute,private dialogService:DialogService) {
         this.onClickCalendar('');
      }
     accountSummary: AccountSummary;
@@ -69,5 +72,14 @@ export class ManageComponent {
             });
           }
           this.groups = groups;
+    }
+    addTransactionDialog() :void{
+        let disposable = this.dialogService.addDialog(ConfirmComponent, {
+            title:'Confirm title', 
+            message:'Confirm message'})
+            .subscribe((result)=>{
+                //We get dialog result
+                let transaction =<Transaction> result;
+            });
     }
 }
