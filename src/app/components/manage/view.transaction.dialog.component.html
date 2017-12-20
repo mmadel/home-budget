@@ -1,0 +1,38 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+       <div class="modal-header">
+          <button type="button" class="close" (click)="close()">&times;</button>
+          <h3 class="modal-title">Transactions:{{selectedBudget.name}}</h3>
+       </div>       
+          <div class="modal-body">
+            <div *ngIf="!transactions?.length > 0"  class="no-result">
+              <h2>No transaction</h2>
+            </div>
+            <table class="table" *ngIf="transactions?.length > 0">
+              <thead>
+              <tr>
+                <th>Amount</th>
+                <th>Remark</th>
+                <th>Transaction Date</th>
+                <th ng-show="transactionAction">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor='let transaction of transactions'>
+                <td>{{transaction.amount}}</td>
+                <td><span title="">{{transaction.remark}}</span></td>
+                <td>{{transaction.transactionOn}}</td>
+                <td ng-show="transactionAction">
+                  <button type="button" class="btn btn-danger" (click)="deleteTransaction(transaction.transactionId)">
+                    <span class="fa fa-trash-o"></span> Delete
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="close()">Close</button>
+          </div>
+    </div>
+ </div>

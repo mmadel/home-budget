@@ -4,9 +4,11 @@ import { AccountSummary } from "../../model/AccountSummary";
 import { ActivatedRoute, Router, Params } from '@angular/router'
 import { UsageSummary } from "../../model/usageSummary";
 import * as moment from 'moment/moment';
-import { ConfirmComponent } from './add.transaction.dialog.component';
+import { AddTransactionComponent } from './add.transaction.dialog.component';
 import { DialogService } from "ng2-bootstrap-modal";
 import { Transaction } from "app/model/Transaction";
+import { IBudget } from "app/model/IBudget";
+import { ViewTransactionComponent } from "app/components/manage/view.transaction.dialog.component";
 @Component({
     templateUrl: 'manage.component.html'
 })
@@ -73,13 +75,23 @@ export class ManageComponent {
           }
           this.groups = groups;
     }
-    addTransactionDialog() :void{
-        let disposable = this.dialogService.addDialog(ConfirmComponent, {
+    addTransactionDialog(budget :IBudget) :void{
+        let disposable = this.dialogService.addDialog(AddTransactionComponent, {
             title:'Confirm title', 
             message:'Confirm message'})
             .subscribe((result)=>{
-                //We get dialog result
-                let transaction =<Transaction> result;
+                if(result !== undefined){
+                    let transaction =<Transaction> result;
+                    transaction.budget = budget;
+                }                
+            });
+    }
+    viewTransactionDialog(budget :IBudget) :void{
+        let disposable = this.dialogService.addDialog(ViewTransactionComponent, {
+            title:'samyyyyyyyyyyyyyyyyy', 
+            message:'Confirm message',
+            selectedBudget : budget})
+            .subscribe((result)=>{          
             });
     }
 }

@@ -22,13 +22,15 @@ import { ManageService } from "./services/manage.service";
 import { AccountSummaryTypeFilterPipe } from "./components/manage/accountSummaryType-Filter.Pipe";
 import { Usage } from "./components/manage/usage.component";
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
-import { ConfirmComponent } from './components/manage/add.transaction.dialog.component';
+import { AddTransactionComponent } from './components/manage/add.transaction.dialog.component';
+import { ViewTransactionComponent } from "app/components/manage/view.transaction.dialog.component";
+import { TransactionService } from "app/services/TransactionService";
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,CategoryComponent,BudgetComponent,ReportComponent,ManageComponent,
     ConfigurationComponent,AddCategoryComponent,CategoryFilterPipe,AddBudgetComponent,BudgetFilterPipe,AccountSummaryTypeFilterPipe,Usage,
-    ConfirmComponent
+    AddTransactionComponent,ViewTransactionComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +39,9 @@ import { ConfirmComponent } from './components/manage/add.transaction.dialog.com
     routing,ToastModule.forRoot(),
     BootstrapModalModule
   ],
-  providers: [CategoryService,BudgetService,ManageService],
+  providers: [CategoryService,BudgetService,ManageService,TransactionService],
   entryComponents: [
-    ConfirmComponent
+    AddTransactionComponent,ViewTransactionComponent
   ],
   bootstrap: [AppComponent]
 })

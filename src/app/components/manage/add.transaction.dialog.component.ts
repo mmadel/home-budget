@@ -8,7 +8,7 @@ export interface ConfirmModel {
 @Component({  
     templateUrl: 'add.transaction.dialog.component.html'
 })
-export class ConfirmComponent extends DialogComponent<ConfirmModel, Transaction> implements ConfirmModel {
+export class AddTransactionComponent extends DialogComponent<ConfirmModel, Transaction> implements ConfirmModel {
   title: string;
   message: string;
   transaction = new  Transaction();
@@ -16,8 +16,6 @@ export class ConfirmComponent extends DialogComponent<ConfirmModel, Transaction>
     super(dialogService);
   }
   confirm() {
-    // we set dialog result as true on click on confirm button, 
-    // then we can get dialog result from caller code 
     this.result = this.transaction;
     this.close();
   }

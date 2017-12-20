@@ -9,7 +9,7 @@
              <div class="form-group has-feedback" ng-class="errorClass('amount')">
                 <label for="amount" class="col-sm-3 control-label">Amount</label>
                 <div class="col-sm-7">
-                   <input type="number" step="1" class="form-control" [(ngModel)]="transaction.transactionAmount" id="amount" name="amount" placeholder="Enter Transaction Amount" autofocus
+                   <input type="number" step="1" class="form-control" [(ngModel)]="transaction.transactionAmount" id="amount" name="amount" placeholder="Enter Transaction Amount"
                         #transactionAmount="ngModel" required>
                       <span class="help-block" *ngIf="transactionAmount.invalid && !transactionAmount.touched">
                         Transaction amount is required.
