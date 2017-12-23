@@ -2,7 +2,7 @@
     <div class="modal-content">
        <div class="modal-header">
           <button type="button" class="close" (click)="close()">&times;</button>
-          <h3 class="modal-title">Add Transaction:</h3>
+          <h3 class="modal-title">Add Transaction: {{selectedBudget.name}}</h3>
        </div>
        <form #addTransactionForm="ngForm" novalidate class="form-horizontal" role="form" (ngSubmit)="confirm()">
           <div class="modal-body">

@@ -25,12 +25,13 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { AddTransactionComponent } from './components/manage/add.transaction.dialog.component';
 import { ViewTransactionComponent } from "app/components/manage/view.transaction.dialog.component";
 import { TransactionService } from "app/services/TransactionService";
+import { EditBudgetComponent } from "app/components/manage/edit.budget.dialog.component";
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,CategoryComponent,BudgetComponent,ReportComponent,ManageComponent,
     ConfigurationComponent,AddCategoryComponent,CategoryFilterPipe,AddBudgetComponent,BudgetFilterPipe,AccountSummaryTypeFilterPipe,Usage,
-    AddTransactionComponent,ViewTransactionComponent
+    AddTransactionComponent,ViewTransactionComponent,EditBudgetComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +42,7 @@ import { TransactionService } from "app/services/TransactionService";
   ],
   providers: [CategoryService,BudgetService,ManageService,TransactionService],
   entryComponents: [
-    AddTransactionComponent,ViewTransactionComponent
+    AddTransactionComponent,ViewTransactionComponent,EditBudgetComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -9,6 +9,7 @@ import { DialogService } from "ng2-bootstrap-modal";
 import { Transaction } from "app/model/Transaction";
 import { IBudget } from "app/model/IBudget";
 import { ViewTransactionComponent } from "app/components/manage/view.transaction.dialog.component";
+import { EditBudgetComponent } from "app/components/manage/edit.budget.dialog.component";
 @Component({
     templateUrl: 'manage.component.html'
 })
@@ -78,7 +79,7 @@ export class ManageComponent {
     addTransactionDialog(budget :IBudget) :void{
         let disposable = this.dialogService.addDialog(AddTransactionComponent, {
             title:'Confirm title', 
-            message:'Confirm message'})
+            message:'Confirm message', selectedBudget : budget})
             .subscribe((result)=>{
                 if(result !== undefined){
                     let transaction =<Transaction> result;
@@ -88,10 +89,19 @@ export class ManageComponent {
     }
     viewTransactionDialog(budget :IBudget) :void{
         let disposable = this.dialogService.addDialog(ViewTransactionComponent, {
-            title:'samyyyyyyyyyyyyyyyyy', 
+            title:'titel', 
             message:'Confirm message',
             selectedBudget : budget})
             .subscribe((result)=>{          
+            });
+    }
+    editBudgetDialog(budget :IBudget) :void{
+        let disposable = this.dialogService.addDialog(EditBudgetComponent, {
+            title:'titel', 
+            message:'Confirm message',
+            selectedBudget : budget})
+            .subscribe((result)=>{  
+                console.log(result);        
             });
     }
 }

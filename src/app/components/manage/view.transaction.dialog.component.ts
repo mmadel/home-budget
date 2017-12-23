@@ -26,7 +26,6 @@ export class ViewTransactionComponent extends DialogComponent<ConfirmModel, Tran
 deleteTransaction(transactionId){
   //this._categoryService.deleteCategory(categoryId)
   for(var index = 0; index < this.transactions.length; index++) {
-    console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" + transactionId);
       if(this.transactions[index].transactionId == transactionId) {
         this.transactions.splice(index, 1);
       }
