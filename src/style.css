@@ -490,25 +490,7 @@ Gradient Background colors
   max-height: 300px;
   overflow: auto;
 }
-.box .box-header {
-  position: relative;
-  *zoom: 1;
-  clear: both;
-  -webkit-border-top-left-radius: 3px;
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 0;
-  -webkit-border-bottom-left-radius: 0;
-  -moz-border-radius-topleft: 3px;
-  -moz-border-radius-topright: 3px;
-  -moz-border-radius-bottomright: 0;
-  -moz-border-radius-bottomleft: 0;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-bottom: 0px solid #f4f4f4;
-  color: #444;
-}
+
 .box .box-header:before,
 .box .box-header:after {
   display: table;
@@ -544,20 +526,8 @@ Gradient Background colors
 .box .box-header > .box-tools {
   padding: 5px 10px 5px 5px;
 }
-.box .box-body {
+.box .box-body{
   padding: 10px;
-  -webkit-border-top-left-radius: 0;
-  -webkit-border-top-right-radius: 0;
-  -webkit-border-bottom-right-radius: 3px;
-  -webkit-border-bottom-left-radius: 3px;
-  -moz-border-radius-topleft: 0;
-  -moz-border-radius-topright: 0;
-  -moz-border-radius-bottomright: 3px;
-  -moz-border-radius-bottomleft: 3px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
 }
 .box .box-body > table,
 .box .box-body > .table {
@@ -617,23 +587,7 @@ Gradient Background colors
 .box .box-body.no-padding .full-width-chart {
   margin: -9px;
 }
-.box .box-footer {
-  border-top: 1px solid #f4f4f4;
-  -webkit-border-top-left-radius: 0;
-  -webkit-border-top-right-radius: 0;
-  -webkit-border-bottom-right-radius: 3px;
-  -webkit-border-bottom-left-radius: 3px;
-  -moz-border-radius-topleft: 0;
-  -moz-border-radius-topright: 0;
-  -moz-border-radius-bottomright: 3px;
-  -moz-border-radius-bottomleft: 3px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  padding: 10px;
-  background-color: #ffffff;
-}
+
 .box.box-solid {
   border-top: 0px;
 }
@@ -1111,27 +1065,7 @@ Gradient Background colors
   width: 360px;
   margin: 90px auto 0 auto;
 }
-.form-box .header {
-  -webkit-border-top-left-radius: 4px;
-  -webkit-border-top-right-radius: 4px;
-  -webkit-border-bottom-right-radius: 0;
-  -webkit-border-bottom-left-radius: 0;
-  -moz-border-radius-topleft: 4px;
-  -moz-border-radius-topright: 4px;
-  -moz-border-radius-bottomright: 0;
-  -moz-border-radius-bottomleft: 0;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  background: #3d9970;
-  box-shadow: inset 0px -3px 0px rgba(0, 0, 0, 0.2);
-  padding: 20px 10px;
-  text-align: center;
-  font-size: 26px;
-  font-weight: 300;
-  color: #fff;
-}
+
 .form-box .body,
 .form-box .footer {
   padding: 10px 20px;
@@ -1150,20 +1084,7 @@ Gradient Background colors
 .form-box .footer > .btn {
   margin-bottom: 10px;
 }
-.form-box .footer {
-  -webkit-border-top-left-radius: 0;
-  -webkit-border-top-right-radius: 0;
-  -webkit-border-bottom-right-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  -moz-border-radius-topleft: 0;
-  -moz-border-radius-topright: 0;
-  -moz-border-radius-bottomright: 4px;
-  -moz-border-radius-bottomleft: 4px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
+
 @media (max-width: 767px) {
   .form-box {
     width: 90%;
@@ -1285,21 +1206,7 @@ Gradient Background colors
   border: 1px solid #fafafa;
   height: 35px;
 }
-.skin-blue .sidebar-form input[type="text"] {
-  color: #666;
-  -webkit-border-top-left-radius: 2px !important;
-  -webkit-border-top-right-radius: 0 !important;
-  -webkit-border-bottom-right-radius: 0 !important;
-  -webkit-border-bottom-left-radius: 2px !important;
-  -moz-border-radius-topleft: 2px !important;
-  -moz-border-radius-topright: 0 !important;
-  -moz-border-radius-bottomright: 0 !important;
-  -moz-border-radius-bottomleft: 2px !important;
-  border-top-left-radius: 2px !important;
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  border-bottom-left-radius: 2px !important;
-}
+
 .skin-blue .sidebar-form input[type="text"]:focus,
 .skin-blue .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
   background-color: #fff;
@@ -1308,21 +1215,7 @@ Gradient Background colors
 .skin-blue .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
   border-left-color: #fff;
 }
-.skin-blue .sidebar-form .btn {
-  color: #999;
-  -webkit-border-top-left-radius: 0 !important;
-  -webkit-border-top-right-radius: 2px !important;
-  -webkit-border-bottom-right-radius: 2px !important;
-  -webkit-border-bottom-left-radius: 0 !important;
-  -moz-border-radius-topleft: 0 !important;
-  -moz-border-radius-topright: 2px !important;
-  -moz-border-radius-bottomright: 2px !important;
-  -moz-border-radius-bottomleft: 0 !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 2px !important;
-  border-bottom-right-radius: 2px !important;
-  border-bottom-left-radius: 0 !important;
-}
+
 /*
     Skin Black
     --------
@@ -1434,21 +1327,7 @@ Gradient Background colors
   height: 35px;
   outline: none;
 }
-.skin-black .sidebar-form input[type="text"] {
-  color: #666;
-  -webkit-border-top-left-radius: 2px !important;
-  -webkit-border-top-right-radius: 0 !important;
-  -webkit-border-bottom-right-radius: 0 !important;
-  -webkit-border-bottom-left-radius: 2px !important;
-  -moz-border-radius-topleft: 2px !important;
-  -moz-border-radius-topright: 0 !important;
-  -moz-border-radius-bottomright: 0 !important;
-  -moz-border-radius-bottomleft: 2px !important;
-  border-top-left-radius: 2px !important;
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  border-bottom-left-radius: 2px !important;
-}
+
 .skin-black .sidebar-form input[type="text"]:focus,
 .skin-black .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
   background-color: #444;
@@ -1457,22 +1336,7 @@ Gradient Background colors
 .skin-black .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
   border-left: 0;
 }
-.skin-black .sidebar-form .btn {
-  color: #999;
-  -webkit-border-top-left-radius: 0 !important;
-  -webkit-border-top-right-radius: 2px !important;
-  -webkit-border-bottom-right-radius: 2px !important;
-  -webkit-border-bottom-left-radius: 0 !important;
-  -moz-border-radius-topleft: 0 !important;
-  -moz-border-radius-topright: 2px !important;
-  -moz-border-radius-bottomright: 2px !important;
-  -moz-border-radius-bottomleft: 0 !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 2px !important;
-  border-bottom-right-radius: 2px !important;
-  border-bottom-left-radius: 0 !important;
-  border-left: 0;
-}
+
 html {
   overflow-x: visible!important;
   -webkit-font-smoothing: antialiased;
