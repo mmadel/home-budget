@@ -1,0 +1,4 @@
+{
+    "manageAccountSummaryUrl": "http://localhost:4200/assets/accountsummary.json",
+    "manageUsageSummaryUrl" : "http://localhost:4200/assets/usage.json"
+}

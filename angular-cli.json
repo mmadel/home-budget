@@ -17,8 +17,7 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.json",
       "prefix": "app",
-      "styles": ["./vendor/bootstrap/css/bootstrap.css","./vendor/font-awesome/css/font-awesome.min.css","style.css","../node_modules/ng2-toastr/bundles/ng2-toastr.min.css"
-      ],
+      "styles": ["./vendor/bootstrap/css/bootstrap.css","./vendor/font-awesome/css/font-awesome.min.css","style.css","../node_modules/ng2-toastr/bundles/ng2-toastr.min.css"],
       "scripts": ["./vendor/jquery/jquery.js","./vendor/bootstrap/js/bootstrap.js","menu.js","../node_modules/ng2-toastr/bundles/ng2-toastr.min.js"],
       "environmentSource": "environments/environment.ts",
       "environments": {

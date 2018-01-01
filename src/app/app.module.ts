@@ -1,5 +1,5 @@
-import { BrowserModule, } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
@@ -26,6 +26,7 @@ import { AddTransactionComponent } from './components/manage/add.transaction.dia
 import { ViewTransactionComponent } from "app/components/manage/view.transaction.dialog.component";
 import { TransactionService } from "app/services/TransactionService";
 import { EditBudgetComponent } from "app/components/manage/edit.budget.dialog.component";
+import { AppConfig } from "config/AppConfig";
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { EditBudgetComponent } from "app/components/manage/edit.budget.dialog.co
     routing,ToastModule.forRoot(),
     BootstrapModalModule
   ],
-  providers: [CategoryService,BudgetService,ManageService,TransactionService],
+  providers: [CategoryService,BudgetService,ManageService,TransactionService,AppConfig,
+    { provide: APP_INITIALIZER, useFactory: (config: AppConfig) => function(){ config.load()}, deps: [AppConfig], multi: true }],
   entryComponents: [
     AddTransactionComponent,ViewTransactionComponent,EditBudgetComponent
   ],
