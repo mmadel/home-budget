@@ -1,4 +1,7 @@
 {
     "manageAccountSummaryUrl": "http://localhost:4200/assets/accountsummary.json",
-    "manageUsageSummaryUrl" : "http://localhost:4200/assets/usage.json"
+    "manageUsageSummaryUrl" : "http://localhost:4200/assets/usage.json",
+    "addCategoryUrl" : "http://localhost:3000/api/addCategory",
+    "deleteCategoryUrl" : "http://localhost:3000/api/deleteCategory",
+    "listCategoriesUrl": "http://localhost:3000/api/categories"
 }

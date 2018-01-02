@@ -1,11 +1,11 @@
 export class ICategory{
-    categoryId: number;
+    _id: number;
     categoryName: string;
     categoryType: string;
     createdDate : string;
 
     clear(){
-        this.categoryId=null;
+        this._id=null;
         this.categoryName="";
         this.categoryType="";
         this.createdDate="";

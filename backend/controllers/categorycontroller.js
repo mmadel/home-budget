@@ -1,44 +1,64 @@
 var Category = require('../models/categoryModel');
 var bodyParser = require('body-parser');
-module.exports = function(app) {
+var Response = require('../models/Response');
+var dateFormat = require('dateformat');
+module.exports = function (app) {
     app.use(bodyParser.json())
-    app.use(bodyParser.urlencoded({extended : true}))
-
+    app.use(bodyParser.urlencoded({ extended: true }))
+    app.use(function (req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
     //create and update category
-    app.post('/api/addCategory',function(req,res){
+    app.post('/api/addCategory', function (req, res) {
+        console.log("@ backend-addCategory");
         //update category
-        if(req.body.id){
-            Category.findByIdAndUpdate(req.body.id,req.body,function(err,category){
-                if(err) throw err;
+        if (req.body.id) {
+            Category.findByIdAndUpdate(req.body.id, req.body, function (err, category) {
+                if (err) throw err;
                 res.send('success');
             });
-        }else{
+        } else {
             //create category
             newCategory = Category(req.body);
-            newCategory.save(function(err){
-                res.send('Success');
+            newCategory.createdDate = formattedCurrentDate();
+            newCategory.save(function (err) {
+                response = new Response();
+                response.setMessage('Category is created successfully');
+                res.send(JSON.stringify(response));
             })
         }
     });
     //get all categories
-    app.get('/api/categories',function(req,res){
-        Category.find(function(err,categories){
-            if(err) throw err;
+    app.get('/api/categories', function (req, res) {
+        console.log("@ backend-listCategories");
+        Category.find(function (err, categories) {
+            if (err) throw err;
             res.send(categories);
         })
     });
     //get caregory by id
-    app.post('/api/category',function(req,res){
-        Category.findById(req.body.id,function(err,category){
-            if(err) throw err
+    app.post('/api/category', function (req, res) {
+        Category.findById(req.body.id, function (err, category) {
+            if (err) throw err
             res.send(category);
         })
     });
     //delete category
-    app.post('/api/deleteCategory',function(req,res){
-        Category.findByIdAndRemove(req.body.id,function(err){
-            if(err) throw err;
-            res.send('Success');
+    app.post('/api/deleteCategory', function (req, res) {
+        console.log('@backend - deletecategory' + req.body.id);
+        Category.findByIdAndRemove(req.body.id, function (err) {
+            if (err) throw err;
+            response = new Response();
+            response.setMessage('Category is deleted successfully');
+            res.send(JSON.stringify(response));
         })
     })
+    function formattedCurrentDate () {
+        var now = new Date();
+        //i.e 2017-10-24 
+        return dateFormat(now, "yyyy-mm-dd");
+    }
 };
