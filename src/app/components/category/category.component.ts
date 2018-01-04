@@ -13,8 +13,7 @@ export class CategoryComponent implements OnInit {
             .subscribe(categories => this.categories = categories);
     }
 
-    deleteCategory(categoryId) {
-        console.log('!!!!!!!!!!!!!!!!!!!!!!!' + categoryId);
+    deleteCategory(categoryId) {        
         for (var index = 0; index < this.categories.length; index++) {
             if (this.categories[index]._id == categoryId) {
                 this._categoryService.deleteCategory(categoryId).subscribe(result => {                    

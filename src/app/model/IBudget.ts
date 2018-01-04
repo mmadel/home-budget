@@ -2,7 +2,7 @@ import { ICategory } from "../model/ICategory";
 
 export class IBudget {
 
-  budgetId: number;
+  _id: number;
   budgetName: string;
   projected: number;
   actual: number;
@@ -10,7 +10,7 @@ export class IBudget {
   createDate: string;
   category: ICategory;
   clear(){
-    this.budgetId=null;
+    this._id=null;
     this.budgetName="";
     this.budgetName=null;
     this.projected=null;

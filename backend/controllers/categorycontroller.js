@@ -16,13 +16,13 @@ module.exports = function (app) {
         console.log("@ backend-addCategory");
         //update category
         if (req.body.id) {
-            Category.findByIdAndUpdate(req.body.id, req.body, function (err, category) {
+            Category.categoryModel.findByIdAndUpdate(req.body.id, req.body, function (err, category) {
                 if (err) throw err;
                 res.send('success');
             });
         } else {
             //create category
-            newCategory = Category(req.body);
+            newCategory = Category.categoryModel(req.body);
             newCategory.createdDate = formattedCurrentDate();
             newCategory.save(function (err) {
                 response = new Response();
@@ -34,14 +34,14 @@ module.exports = function (app) {
     //get all categories
     app.get('/api/categories', function (req, res) {
         console.log("@ backend-listCategories");
-        Category.find(function (err, categories) {
+        Category.categoryModel.find(function (err, categories) {
             if (err) throw err;
             res.send(categories);
         })
     });
     //get caregory by id
     app.post('/api/category', function (req, res) {
-        Category.findById(req.body.id, function (err, category) {
+        Category.categoryModel.findById(req.body.id, function (err, category) {
             if (err) throw err
             res.send(category);
         })
@@ -49,7 +49,7 @@ module.exports = function (app) {
     //delete category
     app.post('/api/deleteCategory', function (req, res) {
         console.log('@backend - deletecategory' + req.body.id);
-        Category.findByIdAndRemove(req.body.id, function (err) {
+        Category.categoryModel.findByIdAndRemove(req.body.id, function (err) {
             if (err) throw err;
             response = new Response();
             response.setMessage('Category is deleted successfully');

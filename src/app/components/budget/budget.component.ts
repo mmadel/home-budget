@@ -15,7 +15,9 @@ export class BudgetComponent implements OnInit {
     deleteBudget(budgetId){
         //this._categoryService.deleteCategory(categoryId)
         for(var index = 0; index < this.budgets.length; index++) {
-            if(this.budgets[index].budgetId == budgetId) {
+            if(this.budgets[index]._id == budgetId) {
+                this._budgetService.deleteBudget(budgetId).subscribe(result => {                    
+                });
               this.budgets.splice(index, 1);
             }
           }

@@ -3,5 +3,9 @@
     "manageUsageSummaryUrl" : "http://localhost:4200/assets/usage.json",
     "addCategoryUrl" : "http://localhost:3000/api/addCategory",
     "deleteCategoryUrl" : "http://localhost:3000/api/deleteCategory",
-    "listCategoriesUrl": "http://localhost:3000/api/categories"
+    "listCategoriesUrl": "http://localhost:3000/api/categories",
+
+    "addBudgetUrl" : "http://localhost:3000/api/addBudget",
+    "deleteBudgetUrl" : "http://localhost:3000/api/deleteBudget",
+    "listBudgetUrl" : "http://localhost:3000/api/budgets"
 }
