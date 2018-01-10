@@ -7,6 +7,7 @@ var BudgetSchema = new Schema({
     actual: Number,
     periodon: String,
     createDate: String,
+    UName : String,
     category: CategorySchema.categorySchema
   });
 var Budget = mongoose.model('Budget',BudgetSchema);

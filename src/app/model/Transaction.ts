@@ -2,7 +2,8 @@
 import { IBudget } from "./IBudget";
 
 export class Transaction {
-    transactionId : number;
+    _id : number;
+    transactionName : string;
     transactionAmount : string;
     transactionRemark : string;
     transactionOn : string;

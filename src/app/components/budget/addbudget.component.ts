@@ -19,6 +19,8 @@ export class AddBudgetComponent implements OnInit {
             .subscribe(categories => this.categories = categories);
     }
     onSubmit() {
+        this.budget.UName='mmadel';
+        console.log(JSON.stringify(this.budget))
         this._budgetService.addBudget(this.budget).subscribe(result =>{
             this.budget.clear();
             this.toastr.success(result['message'], 'Success!');

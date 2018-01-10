@@ -1,5 +1,5 @@
 import{Injectable} from '@angular/core'
-import {Http , Response} from '@angular/http'
+import {Http , Response, Headers,RequestOptions} from '@angular/http'
 import {Observable} from 'rxjs/Observable'
 import { AccountSummary } from "../model/AccountSummary";
 import { UsageSummary } from "../model/usageSummary";
@@ -11,9 +11,14 @@ export class ManageService{
     private _manageUsageSummaryUrl = this.config.getConfig('manageUsageSummaryUrl');
     accountSummary : AccountSummary;
     constructor(private _http : Http,private config: AppConfig){}
-    getAccountSummary(){
-        return this._http.get(this._manageAccountSummaryUrl).map((response:Response) =>  <AccountSummary>response.json())
-        .do(data => console.log('AccountSummary : '+  JSON.stringify(data)));
+    getAccountSummary(userName: string , period : string){
+        let headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        let options = new RequestOptions({
+          headers: headers
+        });
+        var query = {"UName": userName , "periodon" : period}
+        return this._http.post(this._manageAccountSummaryUrl,query,options).map((response:Response) =>  <AccountSummary>response.json());
     }
     getUsageSummary(){
         return this._http.get(this._manageUsageSummaryUrl).map((response:Response) =>  <UsageSummary>response.json())

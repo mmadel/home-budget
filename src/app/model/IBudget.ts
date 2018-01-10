@@ -9,6 +9,7 @@ export class IBudget {
   periodon: string;
   createDate: string;
   category: ICategory;
+  UName : string;
   clear(){
     this._id=null;
     this.budgetName="";

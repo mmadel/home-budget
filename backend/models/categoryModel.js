@@ -4,6 +4,7 @@ var CategorySchema = new Schema({
     categoryName: String,
     categoryType: String,
     createdDate : String,
+    UName : String
 });
 var Category = mongoose.model('Category',CategorySchema);
 

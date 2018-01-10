@@ -13,7 +13,7 @@ export class AddCategoryComponent {
         this.toastr.setRootViewContainerRef(vcr);
     }
     onSubmit() {
-        console.log(this.category);
+        this.category.UName='mmadel';
         this._categoryService.addCategory(this.category).subscribe(result => {
             result;
             this.category.clear();

@@ -1,0 +1,6 @@
+
+{
+    "categories" : [{"Income":"INCOME"},{"Home":"EXPENDITURE"},{"Transportation":"EXPENDITURE"},{"Health":"EXPENDITURE"}],
+	    "budgets" : [{"Interest Income":"Income"},{"Electricity":"Home"},{"Internet":"Home"},{"Fuel":"Transportation"},{"Repairs":"Transportation"},{"Doctor/Dentist":"Health"},{"Medicine/Drugs":"Health"}]
+}
+

@@ -14,7 +14,7 @@ import { EditBudgetComponent } from "app/components/manage/edit.budget.dialog.co
     templateUrl: 'manage.component.html'
 })
 export class ManageComponent {
-    constructor(private _manageService: ManageService, private _route: ActivatedRoute,private dialogService:DialogService) {
+    constructor(private _manageService: ManageService, private _route: ActivatedRoute,private dialogService:DialogService) {        
         this.onClickCalendar('');
      }
     accountSummary: AccountSummary;
@@ -23,42 +23,11 @@ export class ManageComponent {
      
     ngOnInit(): void {
         
-        
-        this._manageService.getUsageSummary().subscribe(usageSummary => {
-            this.usageSummary = usageSummary;
-        });
-        this._manageService.getAccountSummary()
-            .subscribe(accountSummary => {
-                var totalIncome = 0.0;
-                var totalActual = 0.0;
-                var totalProjected = 0.0;
-                accountSummary.groups.forEach((group, index) => {
-                    var projected = 0.0;
-                    var actual = 0.0;
-                    group.budgets.forEach((budget, index) => {
-                        if (group.type == 'INCOME') {
-                            // total actual income
-                            totalIncome += budget.actual;
-                        } else {
-                            // total spending budget
-                            totalProjected += budget.projected;
-                            // total actual spending
-                            totalActual += budget.actual;
-                        }
-                        projected += budget.projected;
-                        actual += budget.actual;
-                    });
-                    group.projected = projected;
-                    group.actual = actual;
-                });
-                this.accountSummary = accountSummary;
-            });
-             
     }
     onClickCalendar(groupPath): void {
-        
         var current= moment().format('YYYY-MM');
         var period =  groupPath || current;
+        this.getAccountSummary('mmadel',period);
         var year = period.split("-")[0];
         var month =period.split("-")[1];
         var groups: any[]=[];
@@ -104,4 +73,37 @@ export class ManageComponent {
                 console.log(result);        
             });
     }
+    getAccountSummary(username, period){
+        
+        this._manageService.getAccountSummary(username, period)
+        .subscribe(accountSummary => {
+            var totalIncome = 0.0;
+            var totalActual = 0.0;
+            var totalProjected = 0.0;
+            
+            accountSummary.groups.forEach((group, index) => {
+                var projected = 0.0;
+                var actual = 0.0;
+                group.budgets.forEach((budget, index) => {
+                    if (group.type == 'INCOME') {
+                        // total actual income
+                        totalIncome += budget.actual;
+                    } else {
+                        // total spending budget
+                        totalProjected += budget.projected;
+                        // total actual spending
+                        totalActual += budget.actual;
+                    }
+                    projected += budget.projected;
+                    actual += budget.actual;
+                });
+                group.projected = projected;
+                group.actual = actual;
+                
+            });
+            this.accountSummary = accountSummary;
+        });
+    }
 }
+
+    

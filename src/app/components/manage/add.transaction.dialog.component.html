@@ -4,7 +4,7 @@
           <button type="button" class="close" (click)="close()">&times;</button>
           <h3 class="modal-title">Add Transaction: {{selectedBudget.name}}</h3>
        </div>
-       <form #addTransactionForm="ngForm" novalidate class="form-horizontal" role="form" (ngSubmit)="confirm()">
+       <form #addTransactionForm="ngForm" novalidate class="form-horizontal" role="form" (ngSubmit)="confirm(selectedBudget)">
           <div class="modal-body">
              <div class="form-group has-feedback" ng-class="errorClass('amount')">
                 <label for="amount" class="col-sm-3 control-label">Amount</label>
