@@ -3,7 +3,7 @@ var Budget = require('../models/budgetModel');
 var Schema = mongoose.Schema;
 var TransactionSchema = new Schema({
     transactionName : String,
-    transactionAmount : String,
+    transactionAmount : Number,
     transactionRemark : String,
     transactionOn : String,
     createdAt: String,

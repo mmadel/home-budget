@@ -53,7 +53,9 @@ export class ManageComponent {
                 if(result !== undefined){
                     let transaction =<Transaction> result;
                     transaction.budget = budget;
-                }                
+                }      
+                var period = moment().format('YYYY-MM');
+                this.getAccountSummary('mmadel',period)            
             });
     }
     viewTransactionDialog(budget :IBudget) :void{

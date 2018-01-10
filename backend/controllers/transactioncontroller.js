@@ -19,10 +19,13 @@ module.exports = function (app) {
         newTransaction = Transaction.TransactionModel(req.body);
         newTransaction.createdAt = formattedCurrentDate();
         console.log(JSON.stringify(newTransaction));
-        newTransaction.save(function (err) {
-            response = new Response();
-            response.setMessage('Transaction is created successfully');
-            res.send(JSON.stringify(response));
+        newTransaction.save(function (err, transaction) {
+            transaction.budget.actual +=transaction.transactionAmount;
+            Budget.budgetModel.findByIdAndUpdate({ "_id": transaction.budget._id }, transaction.budget, function (err, budget) {
+                response = new Response();
+                response.setMessage('Transaction is created successfully');
+                res.send(JSON.stringify(response));
+            });
         })
 
     });
