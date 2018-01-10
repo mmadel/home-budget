@@ -69,8 +69,9 @@ export class ManageComponent {
             title:'titel', 
             message:'Confirm message',
             selectedBudget : budget})
-            .subscribe((result)=>{  
-                console.log(result);        
+            .subscribe((result)=>{   
+                var period = moment().format('YYYY-MM');
+                this.getAccountSummary('mmadel',period)     
             });
     }
     getAccountSummary(username, period){

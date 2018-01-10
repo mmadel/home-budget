@@ -17,10 +17,10 @@ module.exports = function (app) {
     app.post('/api/addBudget', function (req, res) {
         console.log("@ backend-addBudget");
         //update budget
-        if (req.body.id) {
-            Budget.budgetModel.findByIdAndUpdate(req.body.id, req.body, function (err, budget) {
+        if (req.body._id) {
+            Budget.budgetModel.findByIdAndUpdate(req.body._id, req.body, function (err, budget) {
                 if (err) throw err;
-                res.send('success');
+                res.send(JSON.stringify(budget));
             });
         } else {
             //create budget
