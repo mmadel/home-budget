@@ -44,8 +44,8 @@
                 <tr *ngFor='let budget of budgets  | budgetFilter : filter'>
                     <td>{{budget.category.categoryName}}</td>
                     <td>{{budget.budgetName}}</td>
-                    <td>{{budget.projected}}</td>
-                    <td>{{budget.actual}}</td>
+                    <td>{{budget.projected | currency : 'USD':true:'1.2-2'}}</td>
+                    <td>{{budget.actual | currency : 'USD':true:'1.2-2'}}</td>
                     <td>{{budget.periodon}}</td>
                     <td class="actions">
                       <button type="button" class="btn btn-danger" (click)="deleteBudget(budget._id)"><span class="fa fa-trash-o"></span> Delete</button>

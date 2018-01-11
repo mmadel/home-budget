@@ -2,7 +2,7 @@
         <div class="small-box bg-aqua">
           <div class="inner">
             <h3 ng-hide="usageLoaded" class="loading-icon"><span class="ion ion-refreshing"></span></h3>
-            <h3 ng-show="usageLoaded">${{income}}</h3>
+            <h3 ng-show="usageLoaded">{{income | currency : 'USD':true:'1.2-2'}}</h3>
             <p>Total Actual Income</p>
           </div>
           <div class="icon">
@@ -14,7 +14,7 @@
         <div class="small-box bg-yellow">
           <div class="inner">
             <h3 ng-hide="usageLoaded" class="loading-icon"><span class="ion ion-refreshing"></span></h3>
-            <h3 ng-show="usageLoaded">${{projected}}</h3>
+            <h3 ng-show="usageLoaded">{{projected | currency : 'USD':true:'1.2-2'}}</h3>
             <p>Total Projected</p>
           </div>
           <div class="icon">
@@ -26,7 +26,7 @@
         <div class="small-box bg-red">
           <div class="inner">
             <h3 ng-hide="usageLoaded" class="loading-icon"><span class="ion ion-refreshing"></span></h3>
-            <h3 ng-show="usageLoaded">${{actual}}</h3>
+            <h3 ng-show="usageLoaded">{{actual | currency : 'USD':true:'1.2-2'}}</h3>
             <p>Total Actual</p>
           </div>
           <div class="icon">
@@ -38,7 +38,7 @@
         <div class="small-box bg-green">
           <div class="inner">
             <h3 ng-hide="usageLoaded" class="loading-icon"><span class="ion ion-refreshing"></span></h3>
-            <h3 ng-show="usageLoaded">${{remaining}}</h3>
+            <h3 ng-show="usageLoaded">{{remaining | currency : 'USD':true:'1.2-2'}}</h3>
             <p>Total Projected Remaining</p>
           </div>
           <div class="icon">

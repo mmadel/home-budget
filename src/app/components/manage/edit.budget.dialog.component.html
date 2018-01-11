@@ -26,7 +26,7 @@
           <div class="form-group" *ngIf="selectedBudget.category.categoryType == 'EXPENDITURE'">
              <label class="col-sm-3 control-label">Actual</label>
              <div class="col-sm-7">
-                <p class="form-control-static">{{selectedBudget.actual}}</p>
+                <p class="form-control-static">{{selectedBudget.actual | currency : 'USD':true:'1.2-2'}}</p>
              </div>
           </div>
        </div>

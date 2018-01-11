@@ -19,7 +19,7 @@
               </thead>
               <tbody>
               <tr *ngFor='let transaction of transactions'>
-                <td>{{transaction.transactionAmount}}</td>
+                <td>{{transaction.transactionAmount | currency : 'USD':true:'1.2-2'}}</td>
                 <td><span title="">{{transaction.transactionRemark}}</span></td>
                 <td>{{transaction.transactionOn}}</td>
                 <td ng-show="transactionAction">
