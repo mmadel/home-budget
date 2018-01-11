@@ -9,5 +9,7 @@
     "deleteBudgetUrl" : "http://localhost:3000/api/deleteBudget",
     "listBudgetUrl" : "http://localhost:3000/api/budgets",
 
-    "addTransactionUrl" : "http://localhost:3000/api/addtransaction"
+    "addTransactionUrl" : "http://localhost:3000/api/addtransaction",
+    "viewTransactionsUrl" : "http://localhost:3000/api/viewtransactions",
+    "deleteTransactionsUrl" : "http://localhost:3000/api/deletetransaction"
 }

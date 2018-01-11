@@ -19,11 +19,11 @@
               </thead>
               <tbody>
               <tr *ngFor='let transaction of transactions'>
-                <td>{{transaction.amount}}</td>
-                <td><span title="">{{transaction.remark}}</span></td>
+                <td>{{transaction.transactionAmount}}</td>
+                <td><span title="">{{transaction.transactionRemark}}</span></td>
                 <td>{{transaction.transactionOn}}</td>
                 <td ng-show="transactionAction">
-                  <button type="button" class="btn btn-danger" (click)="deleteTransaction(transaction.transactionId)">
+                  <button type="button" class="btn btn-danger" (click)="deleteTransaction(transaction)">
                     <span class="fa fa-trash-o"></span> Delete
                   </button>
                 </td>

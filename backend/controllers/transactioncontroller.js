@@ -18,10 +18,9 @@ module.exports = function (app) {
         console.log('@backend - addtransaction');
         newTransaction = Transaction.TransactionModel(req.body);
         newTransaction.createdAt = formattedCurrentDate();
-        console.log(JSON.stringify(newTransaction));
+        newTransaction.budget.actual = newTransaction.budget.actual +  newTransaction.transactionAmount;
         newTransaction.save(function (err, transaction) {
-            transaction.budget.actual +=transaction.transactionAmount;
-            Budget.budgetModel.findByIdAndUpdate({ "_id": transaction.budget._id }, transaction.budget, function (err, budget) {
+            Budget.budgetModel.findByIdAndUpdate({ "_id": transaction.budget._id }, newTransaction.budget, function (err, budget) {
                 response = new Response();
                 response.setMessage('Transaction is created successfully');
                 res.send(JSON.stringify(response));
@@ -29,6 +28,29 @@ module.exports = function (app) {
         })
 
     });
+    app.post('/api/viewtransactions', function (req, res) {
+        //View Transaction
+        console.log('@backend - viewtransactions');
+        selectedBudget = Budget.budgetModel(req.body);
+        Transaction.TransactionModel.find({ "budget.budgetName": selectedBudget.budgetName, "budget.periodon": selectedBudget.periodon, "budget.UName": selectedBudget.UName }, function (err, transactions) {
+            res.send(JSON.stringify(transactions));
+        })
+    })
+    app.post('/api/deletetransaction', function (req, res) {
+        console.log('@backend - deletetransaction');
+        transaction = Transaction.TransactionModel(req.body);
+        
+        Transaction.TransactionModel.findByIdAndRemove(req.body._id, function (err) {
+            console.log(JSON.stringify(transaction));
+            transaction.budget.actual -= transaction.transactionAmount;
+            
+            Budget.budgetModel.findByIdAndUpdate(transaction.budget._id, transaction.budget, function (err, budget) {
+                response = new Response();
+                response.setMessage('Transaction is deleted successfully');
+                res.send(JSON.stringify(response));
+            });
+        })
+    })
     function formattedCurrentDate() {
         var now = new Date();
         //i.e 2017-10-24 

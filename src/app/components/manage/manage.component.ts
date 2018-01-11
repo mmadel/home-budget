@@ -63,7 +63,9 @@ export class ManageComponent {
             title:'titel', 
             message:'Confirm message',
             selectedBudget : budget})
-            .subscribe((result)=>{          
+            .subscribe((result)=>{ 
+                var period = moment().format('YYYY-MM');  
+                this.getAccountSummary('mmadel',period)        
             });
     }
     editBudgetDialog(budget :IBudget) :void{

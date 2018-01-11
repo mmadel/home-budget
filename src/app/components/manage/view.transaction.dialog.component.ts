@@ -20,13 +20,15 @@ export class ViewTransactionComponent extends DialogComponent<ConfirmModel, Tran
     super(dialogService);
   }
   ngOnInit():void{
-    this._transactionService.getTransactionsByBudgetId()
+    this._transactionService.viewTransactions(this.selectedBudget)
     .subscribe(transactions => this.transactions = transactions);
 } 
-deleteTransaction(transactionId){
+deleteTransaction(transaction){
   //this._categoryService.deleteCategory(categoryId)
+  this._transactionService.deleteTransaction(transaction)
+  .subscribe();
   for(var index = 0; index < this.transactions.length; index++) {
-      if(this.transactions[index]._id == transactionId) {
+      if(this.transactions[index]._id == transaction._id) {
         this.transactions.splice(index, 1);
       }
     }     
