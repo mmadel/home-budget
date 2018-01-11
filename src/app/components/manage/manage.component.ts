@@ -18,7 +18,7 @@ export class ManageComponent {
         this.onClickCalendar('');
      }
     accountSummary: AccountSummary;
-    usageSummary: UsageSummary;
+    usageSummary: UsageSummary = new UsageSummary();
     groups: any[]=[];
      
     ngOnInit(): void {
@@ -107,6 +107,10 @@ export class ManageComponent {
                 
             });
             this.accountSummary = accountSummary;
+            this.usageSummary.income = totalIncome;
+            this.usageSummary.projected = totalProjected;
+            this.usageSummary.actual = totalActual;
+            this.usageSummary.remaining = totalProjected - totalActual;
         });
     }
 }
