@@ -1,0 +1,16 @@
+{
+    "manageAccountSummaryUrl": "http://localhost:3000/api/accountSuammary",
+    "manageUsageSummaryUrl" : "http://localhost:4200/assets/usage.json",
+    "addCategoryUrl" : "http://localhost:3000/api/addCategory",
+    "deleteCategoryUrl" : "http://localhost:3000/api/deleteCategory",
+    "listCategoriesUrl": "http://localhost:3000/api/categories",
+
+    "addBudgetUrl" : "http://localhost:3000/api/addBudget",
+    "deleteBudgetUrl" : "http://localhost:3000/api/deleteBudget",
+    "listBudgetUrl" : "http://localhost:3000/api/budgets",
+
+    "addTransactionUrl" : "http://localhost:3000/api/addtransaction",
+    "viewTransactionsUrl" : "http://localhost:3000/api/viewtransactions",
+    "deleteTransactionsUrl" : "http://localhost:3000/api/deletetransaction",
+    "listTransactionsChartDataUrl" : "http://localhost:3000/api/transactionschartdata"
+}

@@ -23,6 +23,7 @@ export class AddTransactionComponent extends DialogComponent<ConfirmModel, Trans
     this.result = this.transaction;
     this.transaction.budget = selectedBudget;
     this.transaction.transactionName = selectedBudget.category.categoryName;
+    this.transaction.UName ='mmadel'
     this._transactionService.addTransaction(this.transaction).subscribe(result => {
       console.log(JSON.stringify(this.transaction))
       this.close();

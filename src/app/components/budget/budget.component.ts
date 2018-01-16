@@ -9,7 +9,7 @@ export class BudgetComponent implements OnInit {
     constructor(private _budgetService : BudgetService){}
     budgets : IBudget[];
     ngOnInit():void{
-        this._budgetService.getBudgets()
+        this._budgetService.getBudgets('mmadel')
         .subscribe(budgets => this.budgets = budgets);
     }  
     deleteBudget(budgetId){

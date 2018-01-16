@@ -3,14 +3,14 @@ import {Http , Response, Headers,RequestOptions} from '@angular/http'
 import {Observable} from 'rxjs/Observable'
 import { AccountSummary } from "../model/AccountSummary";
 import { UsageSummary } from "../model/usageSummary";
-import { AppConfig } from "config/AppConfig";
+import { Config } from "app/app.config";
 
 @Injectable()
 export class ManageService{
-    private _manageAccountSummaryUrl = this.config.getConfig('manageAccountSummaryUrl');
-    private _manageUsageSummaryUrl = this.config.getConfig('manageUsageSummaryUrl');
+    private _manageAccountSummaryUrl = this.config.get('manageAccountSummaryUrl');
+    private _manageUsageSummaryUrl = this.config.get('manageUsageSummaryUrl');
     accountSummary : AccountSummary;
-    constructor(private _http : Http,private config: AppConfig){}
+    constructor(private _http : Http,private config: Config){}
     getAccountSummary(userName: string , period : string){
         let headers = new Headers();
         headers.append("Content-Type", "application/json");

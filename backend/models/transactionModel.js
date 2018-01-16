@@ -7,6 +7,7 @@ var TransactionSchema = new Schema({
     transactionRemark : String,
     transactionOn : String,
     createdAt: String,
+    UName : String,
     budget : Budget.BudgetSchema,
 });
 var Transaction = mongoose.model('Transaction',TransactionSchema);

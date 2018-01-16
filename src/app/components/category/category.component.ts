@@ -9,7 +9,8 @@ export class CategoryComponent implements OnInit {
     constructor(private _categoryService: CategoryService) { }
     categories: ICategory[];
     ngOnInit(): void {
-        this._categoryService.getCategories()
+        
+        this._categoryService.getCategories('mmadel')
             .subscribe(categories => this.categories = categories);
     }
 

@@ -1,6 +1,7 @@
 var Lookup = require('../models/lookupModel');
 var Budget = require('../models/budgetModel');
 var Category = require('../models/categoryModel');
+var Transaction = require('../models/transactionModel');
 var dateFormat = require('dateformat');
 var ConfigurationModule = require('../modules/configurationmodule');
 var _ = require('lodash');
@@ -9,9 +10,24 @@ var formatCurrentDate = function (formatedDatePattern) {
     //i.e 2017-10-24 
     return dateFormat(now, formatedDatePattern);
 }
-
+var findTransactionByRange = function (userName,start, end) {
+    return new Promise((resolve, reject) => {
+        Transaction.TransactionModel.find({UName : userName, transactionOn: { $gte: start, $lte: end } }, function (err, transactions) {
+            console.log('@@@@@@@@@@@@@@@@'+transactions);
+            return resolve(transactions)
+        })
+    })
+}
+var findBudgetByRange = function (userName, start, end) {
+    return new Promise((resolve,reject)=>{
+        Budget.budgetModel.find({UName : userName , periodon: { $gte: start, $lte: end }},function(err, budgets){
+            return resolve(budgets)
+        })
+    })
+}
 module.exports = {
-
+    FindTransactionByRange: findTransactionByRange,
+    FindBudgetByRange : findBudgetByRange,
     getaccountSummary: function (userName, period) {
         return new Promise((resolve, reject) => {
             let accountSuammary = {};

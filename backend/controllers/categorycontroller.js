@@ -32,9 +32,10 @@ module.exports = function (app) {
         }
     });
     //get all categories
-    app.get('/api/categories', function (req, res) {
+    app.post('/api/categories', function (req, res) {
         console.log("@ backend-listCategories");
-        Category.categoryModel.find(function (err, categories) {
+        var userName = req.body.userName
+        Category.categoryModel.find({"UName" : userName},function (err, categories) {
             if (err) throw err;
             res.send(categories);
         })

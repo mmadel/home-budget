@@ -37,10 +37,13 @@ module.exports = function (app) {
         }
     });
     //get all budgets
-    app.get('/api/budgets', function (req, res) {
+    app.post('/api/budgets', function (req, res) {
         console.log("@ backend-budgets");
-        Budget.budgetModel.find(function (err, budgets) {
+        var userName = req.body.userName
+        console.log(userName);
+        Budget.budgetModel.find({"UName" : userName},function (err, budgets) {
             if (err) throw err;
+            console.log(JSON.stringify(budgets))
             res.send(budgets);
         })
     });

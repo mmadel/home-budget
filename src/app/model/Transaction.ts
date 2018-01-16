@@ -8,5 +8,6 @@ export class Transaction {
     transactionRemark : string;
     transactionOn : string;
     createdAt: string;
+    UName : string
     budget : IBudget;
 }

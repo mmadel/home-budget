@@ -15,7 +15,7 @@ export class AddBudgetComponent implements OnInit {
         this.toastr.setRootViewContainerRef(vcr);
     }
     ngOnInit(): void {
-        this._categoryService.getCategories()
+        this._categoryService.getCategories('mmadel')
             .subscribe(categories => this.categories = categories);
     }
     onSubmit() {

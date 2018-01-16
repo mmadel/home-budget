@@ -26,7 +26,9 @@ import { AddTransactionComponent } from './components/manage/add.transaction.dia
 import { ViewTransactionComponent } from "app/components/manage/view.transaction.dialog.component";
 import { TransactionService } from "app/services/TransactionService";
 import { EditBudgetComponent } from "app/components/manage/edit.budget.dialog.component";
-import { AppConfig } from "config/AppConfig";
+import { ChartsModule } from 'ng2-charts';
+import { Config } from "app/app.config";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,10 +41,11 @@ import { AppConfig } from "config/AppConfig";
     FormsModule,
     HttpModule,
     routing,ToastModule.forRoot(),
-    BootstrapModalModule
+    BootstrapModalModule,
+    ChartsModule
   ],
-  providers: [CategoryService,BudgetService,ManageService,TransactionService,AppConfig,
-    { provide: APP_INITIALIZER, useFactory: (config: AppConfig) => function(){ config.load()}, deps: [AppConfig], multi: true }],
+  providers: [CategoryService,BudgetService,ManageService,TransactionService,
+    {provide: Config, useFactory: () => Config.getInstance('assets/config.json')}],
   entryComponents: [
     AddTransactionComponent,ViewTransactionComponent,EditBudgetComponent
   ],

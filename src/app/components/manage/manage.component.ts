@@ -59,6 +59,7 @@ export class ManageComponent {
             });
     }
     viewTransactionDialog(budget :IBudget) :void{
+        let setdate = moment.utc().format('YYYY-MM-DD'); // today date
         let disposable = this.dialogService.addDialog(ViewTransactionComponent, {
             title:'titel', 
             message:'Confirm message',
