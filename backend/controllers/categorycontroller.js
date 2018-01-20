@@ -1,4 +1,5 @@
 var Category = require('../models/categoryModel');
+var CategoryModule = require('../modules/categorymodule');
 var bodyParser = require('body-parser');
 var Response = require('../models/Response');
 var dateFormat = require('dateformat');
@@ -14,52 +15,32 @@ module.exports = function (app) {
     //create and update category
     app.post('/api/addCategory', function (req, res) {
         console.log("@ backend-addCategory");
-        //update category
-        if (req.body.id) {
-            Category.categoryModel.findByIdAndUpdate(req.body.id, req.body, function (err, category) {
-                if (err) throw err;
-                res.send('success');
-            });
-        } else {
-            //create category
-            newCategory = Category.categoryModel(req.body);
-            newCategory.createdDate = formattedCurrentDate();
-            newCategory.save(function (err) {
+        var payload = req.body;
+        CategoryModule.AddCategory(payload)
+            .then(message => {
                 response = new Response();
-                response.setMessage('Category is created successfully');
+                response.setMessage(message);
                 res.send(JSON.stringify(response));
             })
-        }
     });
     //get all categories
     app.post('/api/categories', function (req, res) {
         console.log("@ backend-listCategories");
         var userName = req.body.userName
-        Category.categoryModel.find({"UName" : userName},function (err, categories) {
-            if (err) throw err;
-            res.send(categories);
-        })
-    });
-    //get caregory by id
-    app.post('/api/category', function (req, res) {
-        Category.categoryModel.findById(req.body.id, function (err, category) {
-            if (err) throw err
-            res.send(category);
-        })
+        CategoryModule.FindCategories(userName)
+            .then(categories => {
+                res.send(categories);
+            })
     });
     //delete category
     app.post('/api/deleteCategory', function (req, res) {
-        console.log('@backend - deletecategory' + req.body.id);
-        Category.categoryModel.findByIdAndRemove(req.body.id, function (err) {
-            if (err) throw err;
-            response = new Response();
-            response.setMessage('Category is deleted successfully');
-            res.send(JSON.stringify(response));
-        })
+        console.log('@backend - deletecategory');
+        categoryId = req.body.id;
+        CategoryModule.DeleteCategory(categoryId)
+            .then(message => {
+                response = new Response();
+                response.setMessage(message);
+                res.send(JSON.stringify(response));
+            })
     })
-    function formattedCurrentDate () {
-        var now = new Date();
-        //i.e 2017-10-24 
-        return dateFormat(now, "yyyy-mm-dd");
-    }
 };

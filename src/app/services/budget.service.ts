@@ -15,13 +15,13 @@ export class BudgetService {
 
     budgets: IBudget[];
     constructor(private _http: Http, private config: Config) { }
-    getBudgets(userName) {
+    getBudgets(userName,period) {
         let headers = new Headers();
         headers.append("Content-Type", "application/json");
         let options = new RequestOptions({
             headers: headers
         });
-        var query = {"userName": userName}
+        var query = {"userName": userName,"periodon":period}
         return this._http.post(this._listBudgetUrl,query,options).map((response: Response) => this.budgets = <IBudget[]>response.json())
             .do(data => console.log('getBudgets : ' + JSON.stringify(data)));
     }

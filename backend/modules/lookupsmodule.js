@@ -140,6 +140,6 @@ var prepareLookupBudgets = function (userName, periodon) {
     })
 }
 module.exports = {
-    FindCategories: findCategories,
-    FindBudgets: findBudgets
+    PrepareLookupCategories:prepareLookupCategories,
+    PrepareLookupBudgets :prepareLookupBudgets
 }

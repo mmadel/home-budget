@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BudgetService } from  '../../services/budget.service'
 import { IBudget } from "../../model/IBudget";
-
+import * as moment from 'moment/moment';
 @Component({
     templateUrl: 'budget.component.html'
 })
@@ -9,7 +9,8 @@ export class BudgetComponent implements OnInit {
     constructor(private _budgetService : BudgetService){}
     budgets : IBudget[];
     ngOnInit():void{
-        this._budgetService.getBudgets('mmadel')
+        var period = moment().format('YYYY-MM');
+        this._budgetService.getBudgets('mmadel',period)
         .subscribe(budgets => this.budgets = budgets);
     }  
     deleteBudget(budgetId){

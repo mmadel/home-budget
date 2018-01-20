@@ -4,6 +4,7 @@ var dateFormat = require('dateformat');
 var Category = require('../models/categoryModel');
 var Budget = require('../models/budgetModel');
 var dateFormat = require('dateformat');
+var Budgetmodule = require('../modules/budgetmodule');
 module.exports = function (app) {
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({ extended: true }))
@@ -16,55 +17,32 @@ module.exports = function (app) {
     //create and update budget
     app.post('/api/addBudget', function (req, res) {
         console.log("@ backend-addBudget");
-        //update budget
-        if (req.body._id) {
-            Budget.budgetModel.findByIdAndUpdate(req.body._id, req.body, function (err, budget) {
-                if (err) throw err;
-                res.send(JSON.stringify(budget));
-            });
-        } else {
-            //create budget
-            newBudget = Budget.budgetModel(req.body);
-            console.log(JSON.stringify(newBudget));
-            newBudget.createDate = formattedCurrentDate("yyyy-mm-dd");
-            newBudget.periodon = formattedCurrentDate( "yyyy-mm");
-            newBudget.actual=0.0;
-            newBudget.save(function (err) {
+        var payload = req.body;
+        Budgetmodule.AddBudget(payload)
+            .then(message => {
                 response = new Response();
-                response.setMessage('Budget is created successfully');
+                response.setMessage(message);
                 res.send(JSON.stringify(response));
             })
-        }
     });
     //get all budgets
     app.post('/api/budgets', function (req, res) {
         console.log("@ backend-budgets");
         var userName = req.body.userName
-        console.log(userName);
-        Budget.budgetModel.find({"UName" : userName},function (err, budgets) {
-            if (err) throw err;
-            console.log(JSON.stringify(budgets))
-            res.send(budgets);
-        })
-    });
-    app.post('/api/budget', function (req, res) {
-        Budget.budgetModel.findById(req.body.id, function (err, budget) {
-            if (err) throw err
-            res.send(budget);
-        })
+        var periodon = req.body.periodon
+        Budgetmodule.FindBudgets(userName, periodon)
+            .then(budgets => {
+                res.send(budgets);
+            })
     });
     //delete budget
     app.post('/api/deleteBudget', function (req, res) {
-        Budget.budgetModel.findByIdAndRemove(req.body.id, function (err) {
-            if (err) throw err;
-            response = new Response();
-            response.setMessage('deleteBudget is deleted successfully');
-            res.send(JSON.stringify(response));
-        })
+        var budgteId = req.body.id;
+        Budgetmodule.DeletBudgetById(budgteId)
+            .then(message => {
+                response = new Response();
+                response.setMessage(message);
+                res.send(JSON.stringify(response));
+            })
     })
-    function formattedCurrentDate (format) {
-        var now = new Date();
-        //i.e 2017-10-24 
-        return dateFormat(now,format);
-    }
 };

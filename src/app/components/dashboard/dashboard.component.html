@@ -20,8 +20,7 @@
       <div class="panel panel-primary">
         <div class="panel-heading"><span class="fa fa-bar-chart-o"></span> Transaction Logs</div>
         <div class="panel-body">
-          <canvas class="chart" baseChart [chartType]="'line'" [datasets]="transactionsChartData.chartData" [labels]="transactionsChartData.chartLabels" [options]="chartOptions" [colors]="colours" [legend]="true" *ngIf="isTransactionsDataAvailable"
-            (chartClick)="onChartClick($event)">
+          <canvas class="chart" baseChart [chartType]="'line'" [datasets]="transactionsChartData.chartData" [labels]="transactionsChartData.chartLabels" [options]="chartOptions" [colors]="colours" [legend]="true" *ngIf="isTransactionsDataAvailable">
           </canvas>
         </div>
       </div>
@@ -30,8 +29,7 @@
       <div class="panel panel-primary">
         <div class="panel-heading"><span class="fa fa-bar-chart-o"></span> Spending by Category</div>
         <div class="panel-body">
-          <canvas class="chart" baseChart [chartType]="'pie'" [datasets]="categoriesChartData.chartData" [labels]="categoriesChartData.chartLabels" [options]="chartOptions"   [legend]="true" *ngIf="isCategoriesDataAvailable"
-            (chartClick)="onChartClick($event)">
+          <canvas class="chart" baseChart [chartType]="'pie'" [datasets]="categoriesChartData.chartData" [labels]="categoriesChartData.chartLabels" [options]="chartOptions"   [legend]="true" *ngIf="isCategoriesDataAvailable">
           </canvas>
         </div>
       </div>
@@ -40,8 +38,7 @@
       <div class="panel panel-primary">
         <div class="panel-heading"><span class="fa fa-bar-chart-o"></span> Spending by Month</div>
         <div class="panel-body">
-          <canvas class="chart" baseChart [chartType]="'bar'" [datasets]="monthlyBudgetsChartData.chartData" [labels]="monthlyBudgetsChartData.chartLabels" [options]="chartOptions"   [legend]="true" *ngIf="isMonthlyBudgetsDataAvailable"
-            (chartClick)="onChartClick($event)">
+          <canvas class="chart" baseChart [chartType]="'bar'" [datasets]="monthlyBudgetsChartData.chartData" [labels]="monthlyBudgetsChartData.chartLabels" [options]="chartOptions"   [legend]="true" *ngIf="isMonthlyBudgetsDataAvailable">
           </canvas>
         </div>
       </div>

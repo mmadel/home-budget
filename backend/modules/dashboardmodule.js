@@ -1,7 +1,7 @@
 var moment = require('moment');
 var _ = require('lodash');
 var Financemodule = require('../modules/financemodule');
-var Configurationmodule = require('../modules/configurationmodule');
+var Budgetmodule = require('../modules/budgetmodule');
 var transactionsChartData = function (userName,year, month) {
     return new Promise((resolve, reject) => {
         var now = moment()
@@ -68,7 +68,7 @@ var transactionsChartData = function (userName,year, month) {
 var categoryChartData = function (uerName, year, month) {
     return new Promise((resolve, reject) => {
         var period = moment().year(year).month(month - 1).date(1).format('YYYY-MM');
-        Configurationmodule.FindBudgets(uerName, period)
+        Budgetmodule.FindBudgets(uerName, period)
             .then(budgets => {
                 let chartLabels = [];
                 let data = [];

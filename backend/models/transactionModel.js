@@ -8,7 +8,7 @@ var TransactionSchema = new Schema({
     transactionOn : String,
     createdAt: String,
     UName : String,
-    budget : Budget.BudgetSchema,
+    budget : { type: Schema.Types.ObjectId, ref: 'Budget.BudgetSchema' },  
 });
 var Transaction = mongoose.model('Transaction',TransactionSchema);
 module.exports = {
