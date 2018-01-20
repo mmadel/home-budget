@@ -42,13 +42,13 @@ export class CategoryService{
     deleteCategory(categoryId){
         return this._http.post(this._deleteCategoryUrl,{"id":categoryId} ).map((response:Response) => response.json());
     }
-    getCategoriesChartData() {
+    getCategoriesChartData(year, month) {
         let headers = new Headers();
         headers.append("Content-Type", "application/json");
         let options = new RequestOptions({
             headers: headers
         });
-        return this._http.post(this._listCategoriesChartDataUrl, {}, options).map((response: Response) => <EntityChartData>response.json())
+        return this._http.post(this._listCategoriesChartDataUrl, {"year" : year , "month" :month}, options).map((response: Response) => <EntityChartData>response.json())
             .do(data => console.log('CategoriesChartData : ' + JSON.stringify(data)));
     }
 }

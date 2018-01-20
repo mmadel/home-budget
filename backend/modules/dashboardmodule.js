@@ -19,7 +19,6 @@ var transactionsChartData = function (userName,year, month) {
 
             days.push({ 'day': day });
         }
-        console.log('############# ' +userName);
         Financemodule.FindTransactionByRange(userName,start, end)
             .then(transactions => {
                 var groups = _(transactions)
@@ -107,7 +106,6 @@ var monthlyChartData = function (uerName) {
         var end = moment().format('YYYY-MM');
         //months starts from 0
         var start = moment().subtract(5, 'months').format('YYYY-MM')
-        console.log(start + ' ' + end)
         Financemodule.FindBudgetByRange(uerName, start, end)
             .then(budgets => {
                 var groups = _(budgets)

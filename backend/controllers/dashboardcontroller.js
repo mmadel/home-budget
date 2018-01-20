@@ -12,14 +12,18 @@ module.exports = function (app) {
     });
 
     app.post('/api/transactionschartdata', function (req, res) {
-        DashBoardmodule.TransactionsChartData('mmadel',2018,1)
+        let year = req.body.year;
+        let month = req.body.month
+        DashBoardmodule.TransactionsChartData('mmadel',year,month)
         .then(result=>{            
             res.send(JSON.stringify(result));
         })
         
     });
     app.post('/api/categorieschartdata', function (req, res) {
-        DashBoardmodule.CategoryChartData('mmadel',2018,1)
+        let year = req.body.year;
+        let month = req.body.month
+        DashBoardmodule.CategoryChartData('mmadel',year,month)
         .then(result=>{            
             res.send(JSON.stringify(result));
         })

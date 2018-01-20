@@ -45,13 +45,13 @@ export class TransactionService{
         });
         return this._http.post(this._deletetransactionsUrl,JSON.stringify(transaction),options).map((response :Response) => <string>response.json())
     }
-    getTransactionsChartData() {
+    getTransactionsChartData(year, month) {
         let headers = new Headers();
         headers.append("Content-Type", "application/json");
         let options = new RequestOptions({
             headers: headers
         });
-        return this._http.post(this._listTransactionsChartDateUrl, {}, options).map((response: Response) => <EntityChartData>response.json())
+        return this._http.post(this._listTransactionsChartDateUrl, {"year" : year , "month" :month}, options).map((response: Response) => <EntityChartData>response.json())
             .do(data => console.log('TransactionsChartData : ' + JSON.stringify(data)));
     }
 }
