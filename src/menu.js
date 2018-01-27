@@ -60,7 +60,7 @@
                 var pad = parseInt($(this).css("margin-left")) + 10;
 
                 $(this).css({"margin-left": pad + "px"});
-            });
+            })
 
         });
 

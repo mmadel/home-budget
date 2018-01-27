@@ -10,7 +10,7 @@ export class CategoryComponent implements OnInit {
     categories: ICategory[];
     ngOnInit(): void {
         
-        this._categoryService.getCategories('mmadel')
+        this._categoryService.getCategories()
             .subscribe(categories => this.categories = categories);
     }
 

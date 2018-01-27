@@ -1,4 +1,6 @@
 var dateFormat = require('dateformat');
+var Budget = require('../models/budgetModel');
+var Transaction = require('../models/transactionModel');
 var addTransaction = function (transaction) {
     return new Promise((resovle, reject) => {
         newTransaction = Transaction.TransactionModel(transaction);
@@ -16,8 +18,8 @@ var addTransaction = function (transaction) {
 }
 var viewtransactions = function (transactionBudget) {
     return new Promise((resovle, reject) => {
+        
         selectedBudget = Budget.budgetModel(transactionBudget);
-
         Transaction.TransactionModel.find({ "budget": selectedBudget._id, "UName": selectedBudget.UName }, function (err, transactions) {
             resovle(transactions);
         })
@@ -25,10 +27,11 @@ var viewtransactions = function (transactionBudget) {
 }
 var deletetransaction = function (transaction) {
     return new Promise((resovle, reject) => {
-        transaction = Transaction.TransactionModel();
+        transaction = Transaction.TransactionModel(transaction);
 
-        Transaction.TransactionModel.findByIdAndRemove(req.body._id, function (err) {
+        Transaction.TransactionModel.findByIdAndRemove(transaction._id, function (err) {
             Budget.budgetModel.findById({ "_id": transaction.budget }, function (err, budget) {
+                
                 budget.actual -= transaction.transactionAmount;
                 Budget.budgetModel.findByIdAndUpdate(transaction.budget, budget, function (err, budget) {
                     resovle('Transaction is deleted successfully')

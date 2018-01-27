@@ -15,11 +15,10 @@ export class AddBudgetComponent implements OnInit {
         this.toastr.setRootViewContainerRef(vcr);
     }
     ngOnInit(): void {
-        this._categoryService.getCategories('mmadel')
+        this._categoryService.getCategories()
             .subscribe(categories => this.categories = categories);
     }
     onSubmit() {
-        this.budget.UName='mmadel';
         console.log(JSON.stringify(this.budget))
         this._budgetService.addBudget(this.budget).subscribe(result =>{
             this.budget.clear();

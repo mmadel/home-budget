@@ -8,6 +8,7 @@ import 'rxjs/add/operator/do'
 import 'rxjs/add/operator/catch'
 import { Config } from "app/app.config";
 import { EntityChartData } from "app/model/EntityChartData";
+import { CredentialService } from "app/services/credential.service";
 
 
 @Injectable()
@@ -17,10 +18,11 @@ export class CategoryService{
     private _deleteCategoryUrl = this.config.get('deleteCategoryUrl');
     private _listCategoriesChartDataUrl =this.config.get('listCategoriesChartDataUrl');
     categories : ICategory[];
-    constructor(private _http : Http,public config: Config){}
+    constructor(private _http : Http,public config: Config,private _credentialService:CredentialService){}
     
 
-    getCategories(userName){
+    getCategories(){
+        var userName = this._credentialService.getLoggedInUser();
         let headers = new Headers();
         headers.append("Content-Type", "application/json");
         let options = new RequestOptions({
@@ -32,6 +34,7 @@ export class CategoryService{
     }
 
     addCategory( category : ICategory){
+        category.UName=this._credentialService.getLoggedInUser();;
         let headers = new Headers();
         headers.append("Content-Type", "application/json");
         let options = new RequestOptions({
@@ -43,12 +46,13 @@ export class CategoryService{
         return this._http.post(this._deleteCategoryUrl,{"id":categoryId} ).map((response:Response) => response.json());
     }
     getCategoriesChartData(year, month) {
+        var userName = this._credentialService.getLoggedInUser();
         let headers = new Headers();
         headers.append("Content-Type", "application/json");
         let options = new RequestOptions({
             headers: headers
         });
-        return this._http.post(this._listCategoriesChartDataUrl, {"year" : year , "month" :month}, options).map((response: Response) => <EntityChartData>response.json())
+        return this._http.post(this._listCategoriesChartDataUrl, {"year" : year , "month" :month,"userName":userName}, options).map((response: Response) => <EntityChartData>response.json())
             .do(data => console.log('CategoriesChartData : ' + JSON.stringify(data)));
     }
 }

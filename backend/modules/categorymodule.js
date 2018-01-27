@@ -1,5 +1,6 @@
 var Category = require('../models/categoryModel');
 var LookupsModule = require('../modules/lookupsmodule');
+var dateFormat = require('dateformat');
 var findCategories = function (userName) {
     return new Promise((resolve, reject) => {
         Category.categoryModel.find({ "UName": userName }, function (err, categories) {
@@ -59,6 +60,11 @@ var deleteCategory = function (categoryId) {
             resolve('Category is deleted successfully');
         })
     })
+}
+function formattedCurrentDate() {
+    var now = new Date();
+    //i.e 2017-10-24 
+    return dateFormat(now, "yyyy-mm-dd");
 }
 module.exports = {
     FindCategories: findCategories,

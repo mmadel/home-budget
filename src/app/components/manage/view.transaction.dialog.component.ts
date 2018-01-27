@@ -20,6 +20,7 @@ export class ViewTransactionComponent extends DialogComponent<ConfirmModel, Tran
     super(dialogService);
   }
   ngOnInit():void{
+    console.log('####### ' + this.selectedBudget);
     this._transactionService.viewTransactions(this.selectedBudget)
     .subscribe(transactions => this.transactions = transactions);
 } 

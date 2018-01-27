@@ -4,14 +4,15 @@ import {Observable} from 'rxjs/Observable'
 import { AccountSummary } from "../model/AccountSummary";
 import { UsageSummary } from "../model/usageSummary";
 import { Config } from "app/app.config";
-
+import { CredentialService } from "app/services/credential.service";
 @Injectable()
 export class ManageService{
     private _manageAccountSummaryUrl = this.config.get('manageAccountSummaryUrl');
     private _manageUsageSummaryUrl = this.config.get('manageUsageSummaryUrl');
     accountSummary : AccountSummary;
-    constructor(private _http : Http,private config: Config){}
-    getAccountSummary(userName: string , period : string){
+    constructor(private _http : Http,private config: Config,private _credentialService:CredentialService){}
+    getAccountSummary(period : string){
+        var userName = this._credentialService.getLoggedInUser();
         let headers = new Headers();
         headers.append("Content-Type", "application/json");
         let options = new RequestOptions({

@@ -48,6 +48,7 @@ var addDefualtBudgets = function (userName, periodon, categories) {
 }
 var addBudget = function(payload){
    return new Promise((resolve, reject)=>{
+    
     if (payload._id) {
         Budget.budgetModel.findByIdAndUpdate(payload._id, payload, function (err, budget) {
             resolve('Budget is updated successfully');
@@ -60,6 +61,7 @@ var addBudget = function(payload){
         newBudget.periodon = moment().format('YYYY-MM');
         newBudget.actual=0.0;
         newBudget.save(function (err) {
+            console.log('Budget is created successfully')
             resolve('Budget is created successfully');
         })
     }

@@ -8,12 +8,6 @@ var moment = require('moment');
 module.exports = function (app) {
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({ extended: true }))
-    app.use(function (req, res, next) {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-        next();
-    });
     app.post('/api/addtransaction', function (req, res) {
         //create Transaction
         console.log('@backend - addtransaction');
@@ -26,7 +20,7 @@ module.exports = function (app) {
     });
     app.post('/api/viewtransactions', function (req, res) {
         //View Transaction
-        console.log('@backend - viewtransactions');
+        console.log('@backend - viewtransactions ' );
         TransactionModule.Viewtransactions(req.body)
         .then(transactions=>{
             res.send(JSON.stringify(transactions));

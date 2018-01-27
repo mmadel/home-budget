@@ -14,5 +14,8 @@
     "deleteTransactionsUrl" : "http://localhost:3000/api/deletetransaction",
     "listTransactionsChartDataUrl" : "http://localhost:3000/api/transactionschartdata",
     "listCategoriesChartDataUrl" : "http://localhost:3000/api/categorieschartdata",
-    "listMonthlyBudgetUrl" : "http://localhost:3000/api/monthlychartdata"
+    "listMonthlyBudgetUrl" : "http://localhost:3000/api/monthlychartdata",
+    
+    "authenticateUrl" : "http://localhost:3000/api/authenticate",
+    "signupUrl" : "http://localhost:3000/api/signup"
 }

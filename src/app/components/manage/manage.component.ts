@@ -27,7 +27,7 @@ export class ManageComponent {
     onClickCalendar(groupPath): void {
         var current= moment().format('YYYY-MM');
         var period =  groupPath || current;
-        this.getAccountSummary('mmadel',period);
+        this.getAccountSummary(period);
         var year = period.split("-")[0];
         var month =period.split("-")[1];
         var groups: any[]=[];
@@ -55,7 +55,7 @@ export class ManageComponent {
                     transaction.budget = budget;
                 }      
                 var period = moment().format('YYYY-MM');
-                this.getAccountSummary('mmadel',period)            
+                this.getAccountSummary(period)            
             });
     }
     viewTransactionDialog(budget :IBudget) :void{
@@ -66,7 +66,7 @@ export class ManageComponent {
             selectedBudget : budget})
             .subscribe((result)=>{ 
                 var period = moment().format('YYYY-MM');  
-                this.getAccountSummary('mmadel',period)        
+                this.getAccountSummary(period)        
             });
     }
     editBudgetDialog(budget :IBudget) :void{
@@ -76,12 +76,12 @@ export class ManageComponent {
             selectedBudget : budget})
             .subscribe((result)=>{   
                 var period = moment().format('YYYY-MM');
-                this.getAccountSummary('mmadel',period)     
+                this.getAccountSummary(period)     
             });
     }
-    getAccountSummary(username, period){
+    getAccountSummary(period){
         
-        this._manageService.getAccountSummary(username, period)
+        this._manageService.getAccountSummary(period)
         .subscribe(accountSummary => {
             var totalIncome = 0.0;
             var totalActual = 0.0;

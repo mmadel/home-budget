@@ -7,50 +7,81 @@ import { BudgetComponent } from './components/budget/budget.component'
 import { ReportComponent } from './components/report/report.component'
 import { ManageComponent } from './components/manage/manage.component'
 import { AddBudgetComponent } from "./components/budget/addbudget.component";
+import { LoginComponent } from "app/components/security/login.component";
+import { AuthGuard } from "app/components/security/AuthGuard";
+import { HomeLayoutComponent } from "app/home-layout.component";
+import { LoginLayoutComponent } from "app/login-layout.component";
+import { SignupComponent } from "app/components/security/signup.component";
+import { LogoutComponent } from "app/components/security/LogoutComponent";
 const routes: Routes = [
-    {
-		path: '',
-		pathMatch: "full",
-		redirectTo: "dashboard"
-    },
-    {
-		path: "dashboard",
-		component: DashboardComponent,
-	},
 	{
-		path : "configuration",
-		component : ConfigurationComponent,
-		children : [
+		path: '',
+		component: HomeLayoutComponent,
+		canActivate: [AuthGuard],
+		children: [
 			{
-				path : "category",
-				component : CategoryComponent
+				path: '',
+				pathMatch: "full",
+				redirectTo: "dashboard"
 			},
 			{
-				path : "addcategory",
-				component : AddCategoryComponent
+				path: "dashboard",
+				component: DashboardComponent,
 			},
 			{
-				path : "budget",
-				component :BudgetComponent
+				path: "configuration",
+				component: ConfigurationComponent,
+				children: [
+					{
+						path: "category",
+						component: CategoryComponent
+					},
+					{
+						path: "addcategory",
+						component: AddCategoryComponent
+					},
+					{
+						path: "budget",
+						component: BudgetComponent
+					},
+					{
+						path: "addbudget",
+						component: AddBudgetComponent
+					},
+
+				]
 			},
 			{
-				path : "addbudget",
-				component : AddBudgetComponent
+				path: "report",
+				component: ReportComponent,
 			},
-			
+			{
+				path: "manage",
+				component: ManageComponent,
+			},
+			{
+				path: "manage/:period",
+				component: ManageComponent,
+			}
 		]
 	},
 	{
-		path: "report",
-		component: ReportComponent
+		path: '',
+		component: LoginLayoutComponent,
+		children: [
+			{
+				path: 'login',
+				component: LoginComponent
+			},
+			{
+				path: 'signup',
+				component: SignupComponent
+			},
+			{
+				path: 'logout',
+				component: LogoutComponent
+			}
+		]
 	},
-	{
-		path: "manage",
-		component: ManageComponent
-	},
-	{
-		path: "manage/:period",
-		component: ManageComponent
-	}	
 ]
 export const routing = RouterModule.forRoot(routes);
