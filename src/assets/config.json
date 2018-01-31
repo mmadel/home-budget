@@ -17,5 +17,6 @@
     "listMonthlyBudgetUrl" : "http://localhost:3000/api/monthlychartdata",
     
     "authenticateUrl" : "http://localhost:3000/api/authenticate",
-    "signupUrl" : "http://localhost:3000/api/signup"
+    "signupUrl" : "http://localhost:3000/api/signup",
+    "updateUserUrl" :"http://localhost:3000/api/updateUser"
 }

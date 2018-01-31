@@ -13,6 +13,7 @@ import { HomeLayoutComponent } from "app/home-layout.component";
 import { LoginLayoutComponent } from "app/login-layout.component";
 import { SignupComponent } from "app/components/security/signup.component";
 import { LogoutComponent } from "app/components/security/LogoutComponent";
+import { ProfileComponent } from "app/components/profile/profile.component";
 const routes: Routes = [
 	{
 		path: '',
@@ -62,6 +63,10 @@ const routes: Routes = [
 			{
 				path: "manage/:period",
 				component: ManageComponent,
+			},
+			{
+				path: "profile",
+				component: ProfileComponent,
 			}
 		]
 	},

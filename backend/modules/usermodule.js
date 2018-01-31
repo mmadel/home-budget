@@ -16,7 +16,19 @@ var findUser = function (userName) {
         })
     })
 }
+var updateUser = function(user){
+    return new  Promise((resolve,reject)=>{
+        User.userModel.findByIdAndUpdate(user._id,user, function (err) {
+            if(err){
+                reject('error');
+            }else{
+                resolve('success');
+            }
+        })
+    })
+}
 module.exports = {
     AddUser: addUser,
-    FindUser: findUser
+    FindUser: findUser,
+    UpdateUser :updateUser
 }

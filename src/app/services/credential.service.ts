@@ -7,10 +7,13 @@ import { User } from "app/model/User";
 
 @Injectable()
 export class CredentialService {
-    private _verfiyTokenUrl = this.config.get('verfiyTokenUrl');
     constructor(private _http: Http, private config: Config) { }
     getLoggedinUserProfile():User{
         return JSON.parse(localStorage.getItem('currentUser'));
+    }
+    updateLoggedinUserProfile(user:User):void{
+        localStorage.removeItem('currentUser')
+        localStorage.setItem('currentUser',JSON.stringify(user));
     }
     getLoggedInUser(): string {
         if(JSON.parse(localStorage.getItem('currentUser'))){

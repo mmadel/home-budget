@@ -12,6 +12,5 @@ export class HomeLayoutComponent implements OnInit {
   constructor(private _credentialService: CredentialService) { }
   ngOnInit(): void {
     this.user = this._credentialService.getLoggedinUserProfile();
-    console.log('########################## ' +JSON.stringify(this.user));
   }
 }

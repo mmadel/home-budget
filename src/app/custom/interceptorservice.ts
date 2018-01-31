@@ -15,13 +15,9 @@ export class InterceptorService extends Http {
         return super.request(url, options);
     }
     post(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
-        console.log(url);
-        console.log(this._getConfigService().get('signupUrl'));
         if (url != this._getConfigService().get('authenticateUrl') && url != this._getConfigService().get('signupUrl')) {
             options = this._setCustomHeaders(options);
         }
-
-        console.log('Custom ' + body)
         return super.post(url, body, options);
     }
     get(url: string, options?: RequestOptionsArgs): Observable<Response> {

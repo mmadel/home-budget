@@ -9,6 +9,7 @@ import * as moment from 'moment/moment';
 export class AuthenticationService {
     private _authenticateUrl = this.config.get('authenticateUrl');
     private _signupUrl = this.config.get('signupUrl');
+    private _updateUserUrl = this.config.get('updateUserUrl');
     private token: String;
     constructor(private _http: Http, private config: Config) { }
     singup(user) {
@@ -55,6 +56,19 @@ export class AuthenticationService {
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+    }
+    updateUser(user) {
+        let headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        let options = new RequestOptions({
+            headers: headers
+        });
+        var query = { "user": user }
+        return this._http.post(this._updateUserUrl, query, options)
+            .map((response: Response) => {
+                var result = response.json()
+                return result;
+            })
     }
 
 }

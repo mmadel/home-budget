@@ -16,8 +16,14 @@ module.exports = function (app) {
         let password = req.body.password
         SecurityModule.Authenticate(userName,password,app.get('secret'))
         .then(result=>{
-            console.log('@@@@@@@@@@@@@@@@@ ' +JSON.stringify(result))
             res.send(JSON.stringify(result))
+        })
+    })
+    app.post('/api/updateUser', function(req,res){
+        var user = req.body.user;
+        UserModule.UpdateUser(user)
+        .then(result=>{
+            res.send(JSON.stringify(result));
         })
     })
 }

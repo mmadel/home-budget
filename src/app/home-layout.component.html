@@ -28,7 +28,7 @@
               <li class="dropdown user user-menu" dropdown>
                 <a href="#" class="dropdown-toggle" dropdown-toggle data-toggle="dropdown">
                   <i class="glyphicon glyphicon-user"></i>                  
-                  <span>{{user.email}} <i class="caret"></i></span>
+                  <span>{{user.userName}} <i class="caret"></i></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li class="user-header bg-light-blue">
@@ -37,7 +37,7 @@
                   </li>
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="/profile" class="btn btn-default btn-flat">Profile</a>
+                      <a [routerLink]="['/profile']" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
                       <a [routerLink]="['/logout']" class="btn btn-default btn-flat">Sign out</a>

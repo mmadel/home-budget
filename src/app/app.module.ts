@@ -37,13 +37,22 @@ import { InterceptorService } from "app/custom/interceptorservice";
 import { CredentialService } from "app/services/credential.service";
 import { SignupComponent } from "app/components/security/signup.component";
 import { LogoutComponent } from "app/components/security/LogoutComponent";
+import { ProfileComponent } from "app/components/profile/profile.component";
+import { ProfileTabComponent } from "app/components/profile/profile.tab.component";
+import { ProfileTabSetComponent } from "app/components/profile/profile.tabset.component";
 
+export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions,injector: Injector) {
+  return new InterceptorService(backend, defaultOptions,injector);
+}
+export function ConfigFactory(){
+  return Config.getInstance('assets/config.json')
+}
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent, CategoryComponent, BudgetComponent, ReportComponent, ManageComponent,
     ConfigurationComponent, AddCategoryComponent, CategoryFilterPipe, AddBudgetComponent, BudgetFilterPipe, AccountSummaryTypeFilterPipe, Usage,
-    AddTransactionComponent, ViewTransactionComponent, EditBudgetComponent, LoginComponent, HomeLayoutComponent, LoginLayoutComponent,SignupComponent,LogoutComponent
+    AddTransactionComponent, ViewTransactionComponent, EditBudgetComponent, LoginComponent, HomeLayoutComponent, LoginLayoutComponent,SignupComponent,LogoutComponent,ProfileComponent,ProfileTabSetComponent,ProfileTabComponent
   ],
   imports: [
     BrowserModule,
@@ -54,12 +63,10 @@ import { LogoutComponent } from "app/components/security/LogoutComponent";
     ChartsModule
   ],
   providers: [CategoryService, BudgetService, ManageService, TransactionService,
-    { provide: Config, useFactory: () => Config.getInstance('assets/config.json') }, AuthGuard, AuthenticationService,
+    { provide: Config, useFactory: ConfigFactory}, AuthGuard, AuthenticationService,
     {
       provide: Http,
-      useFactory: (backend: XHRBackend, defaultOptions: RequestOptions,injector: Injector) => {
-        return new InterceptorService(backend, defaultOptions,injector);
-      },
+      useFactory: httpFactory,
       deps: [XHRBackend, RequestOptions,Injector]
     },CredentialService],
   entryComponents: [
