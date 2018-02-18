@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
     categoriesChartData: EntityChartData;
     isCategoriesDataAvailable: boolean = false;
     transactionsChartData: EntityChartData;
+    transactionsChartDataArray: any[] =[];
     isTransactionsDataAvailable: boolean = false;
     monthlyPeriod: string[] = [];
     year: string = moment().format('YYYY');
@@ -24,7 +25,7 @@ export class DashboardComponent implements OnInit {
         legend: { position: 'right' },
         elements: {
             line: {
-                tension: 0.2, // disables bezier curves
+                tension: 0.3, // disables bezier curves
             },
         }
     };
@@ -49,6 +50,10 @@ export class DashboardComponent implements OnInit {
             .subscribe(transactionsChartData => {
                 this.isTransactionsDataAvailable = true;
                 this.transactionsChartData = transactionsChartData;
+                while(this.transactionsChartDataArray.length > 0) {
+                    this.transactionsChartDataArray.pop();
+                }
+                this.transactionsChartDataArray.push(transactionsChartData)
             });
         this._categoryService.getCategoriesChartData(this.year, this.month)
             .subscribe(categoriesChartData => {
