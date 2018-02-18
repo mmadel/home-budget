@@ -12,25 +12,26 @@ RUN	rm -rf /var/lib/apt/lists/*
 RUN	mkdir /data 
 RUN	mkdir /data/db 
 RUN	chown mongodb:mongodb /data -R 
-RUN	mongod --fork --logpath /var/log/mongodb.log 
 RUN	curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - 
 RUN apt-get install -y nodejs 
 RUN	apt-get install -y build-essential 
 RUN	mkdir  /home/home-budget 
 RUN	git clone https://github.com/mmadel/home-budget.git /home/home-budget 
-RUN	mongo --eval "load('/home/home-budget/initialdatabasescript.js')" 
+RUN chmod +x /home/home-budget/mongoscript.sh
+RUN sh /home/home-budget/mongoscript.sh
 RUN	npm install -g --unsafe-perm @angular/cli 
-RUN	cd /home/home-budget/ 
+WORKDIR /home/home-budget/ 
 RUN	npm install 
 RUN	ng build 
-RUN	cd /home/home-budget/backend  
+WORKDIR /home/home-budget/backend  
 RUN	npm install 
 RUN	npm install pm2 -g 
 RUN	apt-get install -y nginx 
 RUN	cp /home/home-budget/HomeBudget /etc/nginx/sites-available 
-RUN	cd var 
+WORKDIR	/var 
 RUN	mkdir -p www/HomeBudget/root 
-RUN	cp /home/home-budget/dist/*.* /var/www/HomeBudget/root/ 
+RUN	cp -a /home/home-budget/dist/. /var/www/HomeBudget/root/
 RUN	ln -s /etc/nginx/sites-available/HomeBudget /etc/nginx/sites-enabled/ 
 RUN	echo 'service nginx start' >> /etc/bash.bashrc 
 RUN	echo 'pm2 start /home/home-budget/backend/app.js' >> /etc/bash.bashrc
+RUN	echo 'mongod --fork --logpath /var/log/mongodb.log --dbpath /data/db/' >> /etc/bash.bashrc
